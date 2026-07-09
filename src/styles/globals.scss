@@ -20,6 +20,46 @@ body {
   line-height: var(--line-height-normal);
 }
 
+.container {
+  max-width: 1480px;
+  margin-inline: auto;
+  padding-inline: var(--space-2xl);
+}
+
+.section {
+  padding-block: var(--space-3xl);
+
+  & + & {
+    padding-block-start: 0;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-2xl);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: var(--space-xl);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+
 //===-----------------===
 // Typography defaults
 //===-----------------===
