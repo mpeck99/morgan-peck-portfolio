@@ -3,7 +3,8 @@ import styles from "./Button.module.scss";
 type ButtonProps = {
   children: React.ReactNode;
   href?: string;
-  variant?: "primary" | "secondary" | "outline";
+  disabled?: boolean
+  variant?: "primary" | "outline";
   onClick?: () => void;
 };
 
@@ -12,6 +13,7 @@ export default function Button({
   href,
   variant = "primary",
   onClick,
+  disabled
 }: ButtonProps) {
 
   const className = `${styles.button} ${styles[variant]}`;
@@ -25,7 +27,8 @@ export default function Button({
   }
 
   return (
-    <button 
+    <button
+      disabled={disabled}
       className={className}
       onClick={onClick}
     >

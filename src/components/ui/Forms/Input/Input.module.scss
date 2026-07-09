@@ -1,0 +1,31 @@
+.form-control {
+  margin-block-start: var(--space-3xs);
+
+  &::placeholder {
+    text-transform: capitalize;
+  }
+}
+
+.error {
+  border: 2px solid var(--color-error);
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+
+  gap: var(--space-3xs);
+
+  margin-block-start: var(--space-sm);
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-2xs);
+
+  color: var(--color-error);
+  font-size: var(--font-size-small);
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--color-error) 25%, transparent) 0%,
+    color-mix(in srgb, var(--color-error) 10%, transparent) 100%
+  );
+  border: 1px solid var(--color-error);
+}

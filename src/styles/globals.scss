@@ -83,7 +83,7 @@ a {
 }
 
 //===-----------------===
-// Buttons & Inptus
+// Buttons & Inputs
 //===-----------------===
 
 button,
@@ -91,4 +91,21 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-label {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-semibold);
 }

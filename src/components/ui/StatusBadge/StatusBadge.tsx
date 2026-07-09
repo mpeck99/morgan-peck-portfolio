@@ -13,8 +13,7 @@ export default function StatusBadge({
   onClick,
 }: StatusBadgeProps) {
 
-  const className = `${styles.statusBadge} ${styles[variant]}`;
-
+  const className = `${styles['status-badge']} ${styles[variant]}`;
 
 
   return (
