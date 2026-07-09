@@ -1,0 +1,17 @@
+//---------------------------------
+//===---------------------------===
+// Dark mode theme
+//===---------------------------===
+//---------------------------------
+@use "../tokens/theme-colors";
+@use "../tokens/button-colors";
+
+[data-theme="dark"] {
+  @each $key, $value in theme-colors.$theme-dark {
+    --color-#{$key}: #{$value};
+  }
+
+  @each $key, $value in button-colors.$button-dark {
+    --button-#{$key}: #{$value};
+  }
+}

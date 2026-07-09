@@ -1,0 +1,66 @@
+//---------------------------------
+//===---------------------------===
+// Semantic
+//===---------------------------===
+//---------------------------------
+@use "sass:map";
+@use "colors";
+@use "theme-colors";
+@use "button-colors";
+@use "fonts";
+@use "typography";
+@use "spacing";
+@use "radius";
+@use "shadows";
+
+:root {
+  //===-----------------===
+  // Color (defaults to dark)
+  //===-----------------===
+  @each $key, $value in theme-colors.$theme-dark {
+    --color-#{$key}: #{$value};
+  }
+
+  @each $key, $value in button-colors.$button-dark {
+    --button-#{$key}: #{$value};
+  }
+
+  //===-----------------===
+  // Font
+  //===-----------------===
+  --font-heading: #{map-get(fonts.$font-family, heading)};
+  --font-body: #{map-get(fonts.$font-family, body)};
+  --line-height-normal: 1.5;
+
+  @each $key, $value in typography.$font-size {
+    --font-size-#{$key}: #{$value};
+  }
+
+  @each $key, $value in typography.$font-weight {
+    --font-weight-#{$key}: #{$value};
+  }
+
+  --heading-weight: #{map-get(typography.$font-weight, semibold)};
+  --body-weight: #{map-get(typography.$font-weight, regular)};
+
+  //===-----------------===
+  // Spacing
+  //===-----------------===
+  @each $key, $value in spacing.$spacing {
+    --space-#{$key}: #{$value};
+  }
+
+  //===-----------------===
+  // Radius
+  //===-----------------===
+  @each $key, $value in radius.$radius {
+    --radius-#{$key}: #{$value};
+  }
+
+  //===-----------------===
+  // Shadows
+  //===-----------------===
+  @each $key, $value in shadows.$shadows {
+    --shadow-#{$key}: #{$value};
+  }
+}

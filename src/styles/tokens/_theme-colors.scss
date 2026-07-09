@@ -1,0 +1,33 @@
+//---------------------------------
+//===---------------------------===
+// Theme colors
+//===---------------------------===
+//---------------------------------
+@use "sass:map";
+@use "colors";
+
+$theme-dark: (
+  background: map.get(colors.$colors, neutral-950),
+  surface: map.get(colors.$colors, neutral-900),
+  text-primary: map.get(colors.$colors, neutral-100),
+  text-secondary: map.get(colors.$colors, neutral-400),
+  primary: map.get(colors.$colors, teal-500),
+  border: rgba(255, 255, 255, 0.08),
+  accent: map.get(colors.$colors, purple-500),
+  warning: map.get(colors.$colors, yellow-500),
+  error: map.get(colors.$colors, red-500),
+  info: map.get(colors.$colors, blue-500),
+);
+
+$theme-light: (
+  background: map.get(colors.$colors, neutral-100),
+  surface: map.get(colors.$colors, neutral-50),
+  text-primary: map.get(colors.$colors, neutral-950),
+  text-secondary: map.get(colors.$colors, neutral-600),
+  primary: map.get(colors.$colors, teal-600),
+  border: rgba(0, 0, 0, 0.12),
+  accent: map.get(colors.$colors, purple-500),
+  warning: map.get(colors.$colors, yellow-500),
+  error: map.get(colors.$colors, red-500),
+  info: map.get(colors.$colors, blue-500),
+);

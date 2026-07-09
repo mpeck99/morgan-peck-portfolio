@@ -1,0 +1,36 @@
+//---------------------------------
+//===---------------------------===
+// Button colors
+//===---------------------------===
+//---------------------------------
+@use "sass:map";
+@use "colors";
+
+$button-dark: (
+  primary-text: map.get(colors.$colors, neutral-50),
+  primary-hover-text: map.get(colors.$colors, neutral-800),
+  primary-hover-bg: map.get(colors.$colors, teal-400),
+  secondary-bg: map.get(colors.$colors, neutral-50),
+  secondary-hover-bg: map.get(colors.$colors, teal-400),
+  secondary-text: map.get(colors.$colors, neutral-700),
+  secondary-border-hover: map.get(colors.$colors, teal-400),
+  secondary-hover-text: map.get(colors.$colors, neutral-900),
+  outline-bg: map.get(colors.$colors, transparent),
+  outline-text: map.get(colors.$colors, teal-500),
+  outline-hover-text: map.get(colors.$colors, neutral-50),
+  outline-border-hover: map.get(colors.$colors, neutral-50),
+);
+
+$button-light: (
+  primary-text: map.get(colors.$colors, neutral-50),
+  primary-hover-bg: map.get(colors.$colors, teal-500),
+  secondary-bg: map.get(colors.$colors, neutral-50),
+  secondary-hover-bg: map.get(colors.$colors, teal-300),
+  secondary-text: map.get(colors.$colors, teal-600),
+  secondary-border-hover: map.get(colors.$colors, teal-500),
+  secondary-hover-text: map.get(colors.$colors, neutral-900),
+  outline-bg: map.get(colors.$colors, transparent),
+  outline-text: map.get(colors.$colors, teal-600),
+  outline-hover-text: map.get(colors.$colors, neutral-950),
+  outline-border-hover: map.get(colors.$colors, neutral-50),
+);
