@@ -1,19 +1,21 @@
+import styles from './Header.module.scss'
 import Container from "../layout/Container/Container";
 import Logo from "../ui/Logo";
 import ThemeToggle from "../ui/ThemeToggle";
+import Link from 'next/link';
 
 export default function Header() {
     return (
-        <header className="site-header">
+        <header className={styles["site-header"]}>
             <Container>
-                <div className="site-header__inner">
-                    <a href="/"><Logo /></a>
-                    <nav className="site-header__navigation">
+                <div className={styles["site-header__inner"]}>
+                    <Link href="/"><Logo /></Link>
+                    <nav className={styles["site-header__navigation"]}>
                         <ul>
-                            <li><a href="/projects">Projects</a></li>
-                            <li><a href="/blog">Blog</a></li>
-                            <li><a href="/design-system">Design System</a></li>
-                            <li><a href="/about">About</a></li>
+                            <li><Link href="/projects">Projects</Link></li>
+                            <li><Link href="/blog">Blog</Link></li>
+                            <li><Link href="/design-system">Design System</Link></li>
+                            <li><Link href="/about">About</Link></li>
                         </ul>
                     </nav>
                     <ThemeToggle />

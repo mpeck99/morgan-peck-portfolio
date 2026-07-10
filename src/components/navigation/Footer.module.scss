@@ -1,0 +1,24 @@
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+
+  @media (min-width: 767px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr auto;
+  }
+}
+
+.site-footer__title {
+  font-size: var(--font-size-body);
+}
+
+.site-footer__navigation {
+  ul {
+    padding: 0;
+    margin: 0;
+
+    list-style-type: none;
+  }
+}
