@@ -15,11 +15,17 @@
 }
 
 .site-header__navigation {
+  height: 100%;
+
   justify-self: center;
 
   ul {
+    height: 100%;
+
     display: flex;
+    align-items: center;
     gap: var(--space-2xl);
+
     list-style-type: none;
 
     padding-inline: 0;
@@ -117,5 +123,30 @@
 }
 
 .active {
-  border-bottom: 1px solid red;
+  --active-color: var(--color-primary);
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: var(--active-color);
+  font-weight: var(--font-weight-semibold);
+
+  &::after {
+    content: "";
+    width: 150%;
+    height: 3px;
+
+    position: absolute;
+
+    bottom: -2.3rem;
+
+    border-radius: var(--radius-sm);
+    background: var(--active-color);
+  }
+}
+
+[data-theme="light"] .active {
+  --active-color: var(--color-accent);
 }
