@@ -7,6 +7,7 @@ import Container from "../layout/Container/Container";
 import Logo from "../ui/Logo";
 import ThemeToggle from "../ui/ThemeToggle";
 import Link from 'next/link';
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
     { href: "/projects", label: "Projects" },
@@ -17,6 +18,7 @@ const NAV_LINKS = [
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const currentPage = usePathname();
 
     return (
         <header className={styles["site-header"]}>
@@ -28,7 +30,7 @@ export default function Header() {
                         <ul>
                             {NAV_LINKS.map((link) => (
                                 <li key={link.href}>
-                                    <Link href={link.href}>{link.label}</Link>
+                                    <Link href={link.href} className={currentPage === link.href ? styles.active : ""}>{link.label}</Link>
                                 </li>
                             ))}
                         </ul>

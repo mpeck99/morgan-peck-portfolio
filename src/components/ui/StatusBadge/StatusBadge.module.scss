@@ -10,7 +10,7 @@
   padding-block: var(--space-3xs);
   padding-inline: var(--space-sm);
 
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   line-height: 1.4;
   white-space: nowrap;
@@ -35,7 +35,7 @@
 }
 
 .success {
-  color: var(--color-primary);
+  color: color-mix(in srgb, var(--color-primary) 90%, black);
   background: linear-gradient(
     to bottom right,
     color-mix(in srgb, var(--color-primary) 25%, transparent) 0%,
@@ -45,7 +45,7 @@
 }
 
 .warning {
-  color: var(--color-warning);
+  color: color-mix(in srgb, var(--color-warning) 80%, black);
   background: linear-gradient(
     to bottom right,
     color-mix(in srgb, var(--color-warning) 25%, transparent) 0%,
@@ -55,7 +55,7 @@
 }
 
 .error {
-  color: var(--color-error);
+  color: color-mix(in srgb, var(--color-error) 85%, black);
   background: linear-gradient(
     to bottom right,
     color-mix(in srgb, var(--color-error) 25%, transparent) 0%,
@@ -65,11 +65,31 @@
 }
 
 .info {
-  color: var(--color-info);
+  color: color-mix(in srgb, var(--color-info) 80%, black);
   background: linear-gradient(
     to bottom right,
     color-mix(in srgb, var(--color-info) 25%, transparent) 0%,
     color-mix(in srgb, var(--color-info) 10%, transparent) 100%
   );
   border: 1px solid color-mix(in srgb, var(--color-info) 40%, transparent);
+}
+
+// Light mode sits on a much brighter page background, so the tinted badge
+// fills read as pale too — darken the text further here for contrast.
+[data-theme="light"] {
+  .success {
+    color: color-mix(in srgb, var(--color-primary) 65%, black);
+  }
+
+  .warning {
+    color: color-mix(in srgb, var(--color-warning) 50%, black);
+  }
+
+  .error {
+    color: color-mix(in srgb, var(--color-error) 65%, black);
+  }
+
+  .info {
+    color: color-mix(in srgb, var(--color-info) 55%, black);
+  }
 }

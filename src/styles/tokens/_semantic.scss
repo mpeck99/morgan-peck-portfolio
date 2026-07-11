@@ -15,7 +15,14 @@
 
 :root {
   //===-----------------===
-  // Color (defaults to dark)
+  // Raw palette (theme-independent, e.g. --color-teal-700)
+  //===-----------------===
+  @each $key, $value in colors.$colors {
+    --color-#{$key}: #{$value};
+  }
+
+  //===-----------------===
+  // Semantic color (defaults to dark)
   //===-----------------===
   @each $key, $value in theme-colors.$theme-dark {
     --color-#{$key}: #{$value};

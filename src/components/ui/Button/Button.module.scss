@@ -7,11 +7,11 @@
 
   padding-block: var(--space-xs);
   padding-inline: var(--space-lg);
-  border-radius: var(--radius-md);
-  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  border: 3px solid transparent;
 
   font-family: var(--font-body);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
 
   cursor: pointer;
@@ -19,7 +19,7 @@
     border-color 150ms ease;
 
   &:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 3px solid var(--color-primary);
     outline-offset: 2px;
   }
 
