@@ -9,7 +9,7 @@
 $theme-dark: (
   background: map.get(colors.$colors, neutral-950),
   surface: map.get(colors.$colors, neutral-900),
-  text-primary: map.get(colors.$colors, neutral-100),
+  text-primary: map.get(colors.$colors, neutral-200),
   text-secondary: map.get(colors.$colors, neutral-400),
   primary: map.get(colors.$colors, teal-600),
   border: rgba(255, 255, 255, 0.08),
@@ -41,5 +41,5 @@ $theme-light: (
   error: map.get(colors.$colors, red-500),
   info: map.get(colors.$colors, blue-500),
   link: map.get(colors.$colors, neutral-950),
-  link-hover: map.get(colors.$colors, teal-700),
+  link-hover: map.get(colors.$colors, teal-800),
 );

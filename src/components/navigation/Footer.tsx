@@ -49,7 +49,10 @@ export default function Footer() {
                             </ul>
                         </nav>
                     </div>
-                    <p>&copy; {currentYear}</p>
+                    <div className={styles["site-footer__copy"]}>
+                        <p>&copy; {currentYear}</p>
+                        <p>Built with Next.js</p>
+                    </div>
                 </div>
             </Container>
         </footer>

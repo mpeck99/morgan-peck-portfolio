@@ -57,7 +57,8 @@
 
   &:hover,
   &:focus-visible {
+    background: var(--button-outline-bg-hover);
     color: var(--button-outline-hover-text);
-    border-color: var(--button-outline-border-hover);
+    border-color: var(--color-transparent);
   }
 }
