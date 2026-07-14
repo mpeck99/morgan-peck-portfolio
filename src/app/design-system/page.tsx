@@ -4,8 +4,8 @@ import Stack from "@/components/layout/Stack/Stack";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Input from "@/components/ui/Forms/Input";
-import Logo from "@/components/ui/Logo";
 import StatusBadge from "@/components/ui/StatusBadge";
+import { Leaf } from "lucide-react";
 
 export default function DesignSystem() {
   return (
@@ -19,6 +19,7 @@ export default function DesignSystem() {
             <div className="btn-row">
               <Button>Primary Button</Button>
               <Button href="#0">Primary Button - Link</Button>
+              <Button variant="primary" iconPosition="right" icon={<Leaf/>}>Button</Button>
               <Button disabled>Primary Button - Disabled</Button>
             </div>
             <h3>Outline Button</h3>
@@ -27,6 +28,7 @@ export default function DesignSystem() {
               <Button variant="outline" href="#0">
                 Outline - Link
               </Button>
+              <Button variant="outline" iconPosition="left" icon={<Leaf/>}>Button</Button>
               <Button variant="outline" disabled>
                 Outline - Disabled
               </Button>

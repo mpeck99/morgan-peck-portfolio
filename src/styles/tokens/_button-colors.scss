@@ -27,7 +27,7 @@ $button-light: (
   primary-hover-bg: map.get(colors.$colors, teal-500),
   outline-bg: map.get(colors.$colors, transparent),
   outline-bg-hover: map.get(colors.$colors, teal-800),
-  outline-text: map.get(colors.$colors, neutral-800),
+  outline-text: map.get(colors.$colors, teal-800),
   outline-border: map.get(colors.$colors, teal-700),
   outline-hover-text: map.get(colors.$colors, neutral-50),
   outline-border-hover: map.get(colors.$colors, teal-800),

@@ -1,12 +1,13 @@
 .button {
   width: fit-content;
 
-  display: block;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
 
-  padding-block: var(--space-xs);
-  padding-inline: var(--space-lg);
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-xl);
   border-radius: var(--radius-lg);
   border: 3px solid transparent;
 
@@ -60,5 +61,17 @@
     background: var(--button-outline-bg-hover);
     color: var(--button-outline-hover-text);
     border-color: var(--color-transparent);
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    display: block;
   }
 }
