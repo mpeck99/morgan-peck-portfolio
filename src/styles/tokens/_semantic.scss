@@ -35,9 +35,11 @@
   //===-----------------===
   // Font
   //===-----------------===
-  --font-heading: #{map-get(fonts.$font-family, heading)};
-  --font-body: #{map-get(fonts.$font-family, body)};
+  --font-heading: #{map.get(fonts.$font-family, heading)};
+  --font-body: #{map.get(fonts.$font-family, body)};
+  --line-height-small: 1;
   --line-height-normal: 1.5;
+  --line-height-large: 2;
 
   @each $key, $value in typography.$font-size {
     --font-size-#{$key}: #{$value};
@@ -47,8 +49,8 @@
     --font-weight-#{$key}: #{$value};
   }
 
-  --heading-weight: #{map-get(typography.$font-weight, semibold)};
-  --body-weight: #{map-get(typography.$font-weight, regular)};
+  --heading-weight: #{map.get(typography.$font-weight, semibold)};
+  --body-weight: #{map.get(typography.$font-weight, regular)};
 
   //===-----------------===
   // Spacing

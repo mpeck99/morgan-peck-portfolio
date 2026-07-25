@@ -9,6 +9,12 @@ export default function About() {
         <Container>
           <Stack>
             <h1>About</h1>
+            <h2>Credits</h2>
+            <ul>
+              <li>
+                <a href="https://storyset.com/work">Work illustrations by Storyset</a>
+              </li>
+            </ul>
           </Stack>
         </Container>
       </Section>

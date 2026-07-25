@@ -30,7 +30,9 @@ export default function ThemeToggle() {
       aria-checked={theme === "light"}
       className={styles["theme-toggle"]}
       onClick={toggleTheme}
-      aria-label={mounted ? `Switch to ${theme === "dark" ? "light" : "dark"} mode` : "Toggle theme"}
+      aria-label={
+        mounted ? `Switch to ${theme === "dark" ? "light" : "dark"} mode` : "Toggle theme"
+      }
     >
       <span
         className={styles.thumb}

@@ -3,16 +3,15 @@ interface GridProps {
   columns?: number;
 }
 
-export default function Grid({
-  children,
-  columns = 3,
-}: GridProps) {
+export default function Grid({ children, columns = 3 }: GridProps) {
   return (
-    <div 
+    <div
       className="grid"
-      style={{
-        "--columns": columns
-      } as React.CSSProperties}
+      style={
+        {
+          "--columns": columns,
+        } as React.CSSProperties
+      }
     >
       {children}
     </div>

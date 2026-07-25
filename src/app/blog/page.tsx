@@ -12,7 +12,6 @@ export default function Blog() {
           </Stack>
         </Container>
       </Section>
-      
     </main>
   );
 }

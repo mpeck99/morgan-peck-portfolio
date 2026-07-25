@@ -1,12 +1,12 @@
 import styles from "./Button.module.scss";
 
-type ButtonProps = {
+export type ButtonProps = {
   children: React.ReactNode;
   href?: string;
-  disabled?: boolean
+  disabled?: boolean;
   variant?: "primary" | "outline";
   onClick?: () => void;
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
   icon?: React.ReactNode;
 };
 
@@ -17,18 +17,25 @@ export default function Button({
   onClick,
   disabled,
   icon,
-  iconPosition
+  iconPosition,
 }: ButtonProps) {
-
   const className = `${styles.button} ${styles[variant]}`;
 
   const content = (
-  <>
-    {icon && iconPosition === "left" && <span aria-hidden="true" className={styles.icon}>{icon}</span>}
-    {children}
-    {icon && iconPosition === "right" && <span aria-hidden="true" className={styles.icon}>{icon}</span>}
-  </>
-);
+    <>
+      {icon && iconPosition === "left" && (
+        <span aria-hidden="true" className={styles.icon}>
+          {icon}
+        </span>
+      )}
+      {children}
+      {icon && iconPosition === "right" && (
+        <span aria-hidden="true" className={styles.icon}>
+          {icon}
+        </span>
+      )}
+    </>
+  );
 
   if (href) {
     return (
@@ -39,11 +46,7 @@ export default function Button({
   }
 
   return (
-    <button
-      disabled={disabled}
-      className={className}
-      onClick={onClick}
-    >
+    <button disabled={disabled} className={className} onClick={onClick}>
       {content}
     </button>
   );

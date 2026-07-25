@@ -114,7 +114,9 @@ main {
 
 .container {
   max-width: 1920px;
+
   margin-inline: auto;
+
   padding-inline: var(--space-2xl);
 }
 
@@ -148,6 +150,10 @@ main {
 
 @media (max-width: 768px) {
   .split {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
     grid-template-columns: 1fr;
   }
 }
@@ -217,6 +223,11 @@ a {
   &:focus {
     color: var(--color-link-hover);
   }
+}
+
+.highlight {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
 }
 
 //===-----------------===

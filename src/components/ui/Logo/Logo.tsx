@@ -1,6 +1,6 @@
 import { CodeXml } from "lucide-react";
 
-type LogoProps = {
+export type LogoProps = {
   width?: number;
 };
 
@@ -11,7 +11,7 @@ export default function Logo({ width = 104 }: LogoProps) {
   const height = width / (VIEWBOX_WIDTH / VIEWBOX_HEIGHT);
 
   return (
-     <div className="logo logo--circle">
+    <div className="logo logo--circle">
       <div className="inner">
         <span>MP</span>
       </div>

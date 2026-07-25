@@ -1,5 +1,12 @@
 .site-header {
   position: relative;
+
+  max-width: 1920px;
+  width: 95vw;
+
+  margin-inline: auto;
+
+  border-bottom: 1.5px solid var(--color-border);
 }
 
 .site-header__inner {
@@ -10,8 +17,6 @@
   padding-block: var(--space-md);
 
   align-items: center;
-
-  border-bottom: 1.5px solid var(--color-border);
 }
 
 .site-header__navigation {

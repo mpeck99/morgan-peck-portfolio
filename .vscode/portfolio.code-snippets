@@ -1,0 +1,29 @@
+{
+  "Component Boilerplate": {
+    "scope": "typescriptreact",
+    "prefix": "rcomp",
+    "body": [
+      "import styles from \"./${1:ComponentName}.module.scss\";",
+      "",
+      "type ${1:ComponentName}Props = {",
+      "  $2",
+      "};",
+      "",
+      "export default function ${1:ComponentName}({ $3 }: ${1:ComponentName}Props) {",
+      "  return (",
+      "    <div className={styles[\"${4:component-name}\"]}>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "}",
+      "",
+    ],
+    "description": "Scaffold a component matching this project's Button/Logo/ThemeToggle pattern",
+  },
+  "Component Barrel Export": {
+    "scope": "typescriptreact",
+    "prefix": "rbarrel",
+    "body": ["export { default } from \"./${1:ComponentName}\";", ""],
+    "description": "index.tsx barrel export matching this project's component folder pattern",
+  },
+}

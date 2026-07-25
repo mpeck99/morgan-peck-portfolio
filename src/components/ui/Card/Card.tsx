@@ -1,9 +1,11 @@
 import styles from "./Card.module.scss";
+import clsx from "clsx";
 
-type CardProps = {
+export type CardProps = {
   children: React.ReactNode;
+  className?: string;
 };
 
-export default function Card({ children }: CardProps) {
-  return <article className={styles.card}>{children}</article>;
+export default function Card({ children, className }: CardProps) {
+  return <article className={clsx(styles.card, className)}>{children}</article>;
 }

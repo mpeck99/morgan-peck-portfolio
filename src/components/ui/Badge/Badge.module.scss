@@ -1,0 +1,24 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+
+  margin-block-end: var(--space-sm);
+
+  padding-inline: var(--space-2xs);
+  padding-block: var(--space-2xs);
+
+  font-size: var(--font-size-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--color-text-secondary);
+
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius-full, 999px);
+}
+
+.icon {
+  flex-shrink: 0;
+}

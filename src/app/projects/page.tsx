@@ -12,7 +12,6 @@ export default function Projects() {
           </Stack>
         </Container>
       </Section>
-      
     </main>
   );
 }

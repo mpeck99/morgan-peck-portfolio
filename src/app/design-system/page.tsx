@@ -19,7 +19,9 @@ export default function DesignSystem() {
             <div className="btn-row">
               <Button>Primary Button</Button>
               <Button href="#0">Primary Button - Link</Button>
-              <Button variant="primary" iconPosition="right" icon={<Leaf/>}>Button</Button>
+              <Button variant="primary" iconPosition="right" icon={<Leaf />}>
+                Button
+              </Button>
               <Button disabled>Primary Button - Disabled</Button>
             </div>
             <h3>Outline Button</h3>
@@ -28,7 +30,9 @@ export default function DesignSystem() {
               <Button variant="outline" href="#0">
                 Outline - Link
               </Button>
-              <Button variant="outline" iconPosition="left" icon={<Leaf/>}>Button</Button>
+              <Button variant="outline" iconPosition="left" icon={<Leaf />}>
+                Button
+              </Button>
               <Button variant="outline" disabled>
                 Outline - Disabled
               </Button>
@@ -45,23 +49,10 @@ export default function DesignSystem() {
             <StatusBadge variant="error">Error</StatusBadge>
             <StatusBadge variant="info">Info</StatusBadge>
             <h2>Inputs</h2>
-            <Input
-              label="Text input"
-              placeholder="placeholder"
-              type="text"
-              required
-            />
+            <Input label="Text input" placeholder="placeholder" type="text" required />
             <Input label="Email input" placeholder="placeholder" type="email" />
-            <Input
-              label="Password input"
-              placeholder="placeholder"
-              type="password"
-            />
-            <Input
-              label="Number input"
-              placeholder="placeholder"
-              type="number"
-            />
+            <Input label="Password input" placeholder="placeholder" type="password" />
+            <Input label="Number input" placeholder="placeholder" type="number" />
             <Input
               label="Error input"
               placeholder="placeholder"
