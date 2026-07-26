@@ -257,3 +257,42 @@ select {
   font-family: var(--font-heading);
   font-weight: var(--font-weight-semibold);
 }
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+//===-----------------===
+// Theme-conditional images
+//===-----------------===
+// Defaults to dark (matches the app's default/unset theme state).
+// Pair with the ThemedImage component to swap light/dark image assets
+// with no JS and no hydration flicker.
+.theme-dark-only {
+  display: block;
+}
+
+.theme-light-only {
+  display: none;
+}
+
+[data-theme="light"] {
+  .theme-dark-only {
+    display: none;
+  }
+
+  .theme-light-only {
+    display: block;
+  }
+}

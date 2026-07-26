@@ -1,3 +1,14 @@
+.banner {
+  max-width: 900px;
+
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+
+  margin-bottom: var(--space-xl);
+
+  border-radius: var(--radius-lg);
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -22,15 +33,10 @@
   }
 }
 
-//===-----------------===
-// Prose (MDX body content)
-//===-----------------===
-.prose {
+.body {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-
-  max-width: 70ch;
 
   p {
     line-height: 1.6;

@@ -5,11 +5,18 @@ import readingTime from "reading-time";
 
 const BLOG_DIR = path.join(process.cwd(), "src/data/blog");
 
+export type ThemedImage = {
+  light: string;
+  dark: string;
+};
+
 export type BlogPostFrontmatter = {
   title: string;
   slug: string;
   date: string;
   description: string;
+  thumbnail?: ThemedImage;
+  banner?: ThemedImage;
 };
 
 export type BlogPostSummary = BlogPostFrontmatter & {
@@ -38,6 +45,8 @@ function readPostFile(slug: string): { frontmatter: BlogPostFrontmatter; content
       slug: data.slug ?? slug,
       date: data.date,
       description: data.description,
+      thumbnail: data.thumbnail,
+      banner: data.banner,
     },
     content,
   };

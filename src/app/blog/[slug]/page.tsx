@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Container from "@/components/layout/Container/Container";
 import Section from "@/components/layout/Section/Section";
 import Stack from "@/components/layout/Stack/Stack";
+import ThemedImage from "@/components/ui/ThemedImage";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import styles from "./page.module.scss";
 
@@ -59,8 +60,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <span className={styles.readingTime}>{post.readingTime}</span>
                 </div>
                 <h1>{post.title}</h1>
+                {post.banner && (
+                  <div className={styles.banner}>
+                    <ThemedImage light={post.banner.light} dark={post.banner.dark} alt="" />
+                  </div>
+                )}
               </header>
-              <div className={styles.prose}>
+              <div className={styles.body}>
                 <MDXRemote source={post.content} />
               </div>
             </article>
