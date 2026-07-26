@@ -6,7 +6,10 @@
 .card--project {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto 1fr auto;
+  // icon / title / description / spacer / link
+  // the spacer row absorbs leftover height so the link always
+  // lands in the same spot regardless of description length
+  grid-template-rows: auto auto auto 1fr auto;
   gap: var(--space-md) var(--space-2xl);
 
   position: relative;
@@ -62,7 +65,7 @@
   align-items: center;
   gap: var(--space-3xs);
 
-  grid-row: 4;
+  grid-row: 5;
   grid-column: 1;
   align-self: start;
 }

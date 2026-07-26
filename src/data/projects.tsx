@@ -8,10 +8,11 @@ export const projects = [
       "A collection of articles exploring web accessibility, frontend development, and the practices behind building more inclusive digital experiences.",
     link: {
       title: "View my blog",
-      url: "/projects/accessibility-blog",
+      url: "/blog",
     },
     image: {
       url: "/images/icon-accessibility.svg",
+      alt: "",
     },
   },
   {
@@ -24,6 +25,7 @@ export const projects = [
     },
     image: {
       url: "./images/rubber-plant.png",
+      alt: "",
     },
   },
 
@@ -37,6 +39,7 @@ export const projects = [
     },
     image: {
       url: "/images/development-icon.svg",
+      alt: "",
     },
   },
 ];

@@ -1,0 +1,56 @@
+//---------------------------------
+//===---------------------------===
+// Blog Card
+//===---------------------------===
+//---------------------------------
+.card--post {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: var(--space-md);
+}
+
+.meta {
+  grid-row: 1;
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.readingTime {
+  &::before {
+    content: "•";
+    margin-right: var(--space-2xs);
+  }
+}
+
+.title {
+  grid-row: 2;
+}
+
+.description {
+  grid-row: 3;
+}
+
+.link {
+  grid-row: 5;
+  align-self: start;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  width: fit-content;
+}
+
+.linkIcon {
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.link:hover .linkIcon,
+.link:focus-visible .linkIcon {
+  transform: translateX(3px);
+}

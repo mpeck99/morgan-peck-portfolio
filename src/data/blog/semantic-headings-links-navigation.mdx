@@ -1,0 +1,338 @@
+---
+title: "Headings, Links, and Navigation"
+slug: "semantic-headings-links-navigation"
+date: "2022-03-30"
+description: "Proper markup for headings, links, and navigation ensures your site is accessible and helps users find content efficiently."
+---
+
+Headings, links, and navigation form the backbone of how users navigate and understand your website. When properly implemented, these elements create a logical structure that benefits everyone—especially users with assistive technologies.
+
+This guide covers the essential principles for implementing accessible headings, links, and navigation patterns.
+
+## Headings
+
+Headings provide structure to your content and help users understand the page layout. They're essential for both SEO and accessibility.
+
+### Heading Structure Rules
+
+**One H1 per page:** Every page must have a single `<h1>` element located at the beginning of the main content. This heading should clearly describe what users can expect on the page.
+
+**Maintain hierarchy:** Headings should follow a logical order without skipping levels:
+
+```html
+<h1>Main content</h1>
+
+<h2>Subheading 1</h2>
+<p>Some content related to the subheading</p>
+
+<h3>Sub-subheading</h3>
+<p>Some content related to the sub-subheading.</p>
+
+<h2>Subheading 2</h2>
+<p>More content at the same level as Subheading 1</p>
+```
+
+**Don't skip levels:** Going from `<h1>` to `<h3>` creates confusion for screen reader users who navigate by heading levels.
+
+**Structure, not style:** If text acts like a heading visually or structurally, it should be marked up as a heading. Never use heading tags solely for visual effects—use CSS for styling instead.
+
+### Why Headings Matter
+
+Screen reader users rely on headings to:
+
+- Understand page structure at a glance
+- Navigate quickly to sections of interest
+- Build a mental model of content organization
+
+Proper heading structure makes your content navigable and understandable for everyone.
+
+## Links
+
+Links are fundamental navigation elements that must be accessible to all users, including those using screen readers.
+
+### How Screen Readers Announce Links
+
+When a user tabs to a link, screen readers announce it as a link and read its text. Without proper text, screen readers will read the entire URL—which can be long, complicated, and unhelpful.
+
+### Link Text Calculation
+
+Screen readers determine link text in this order of precedence:
+
+1. **`aria-labelledby`** - References another element's text
+2. **`aria-label`** - Provides a custom label
+3. **Text content** - Text between `<a>` tags (preferred method)
+
+```html
+<a href="/about">About our company</a>
+```
+
+4. **`title` attribute** - Last resort, not reliably announced
+
+### Links vs. Buttons
+
+Choose the correct semantic element:
+
+- **`<a>` (Links):** Navigate to a different location or page
+- **`<button>` (Buttons):** Trigger scripted functionality or actions
+
+### Link Best Practices
+
+**Write descriptive link text:** Users should understand the link's purpose from its text alone. Avoid generic phrases like "click here" or "read more."
+
+```html
+<!-- Bad -->
+<a href="/services">Click here</a> for our services
+
+<!-- Good -->
+<a href="/services">View our services</a>
+```
+
+**Avoid redundant words:** Don't include "link" or "button" in the text—screen readers already announce the element type.
+
+**Make links visually distinct:** Links should stand out from surrounding text. If you customize default link styles, ensure you:
+
+- Use a different color with sufficient contrast
+- Add underlines (recommended)
+- Provide visual feedback on hover and focus
+- Include visible borders or outlines on focus
+
+These visual distinctions help users with low vision identify interactive elements.
+
+### Consistency in Link Text
+
+**Same destination, same text:** Don't use different text for links going to the same URL.
+
+```html
+<!-- Bad - confusing for users -->
+<a href="/contact">Get in touch</a>
+<a href="/contact">Contact us</a>
+<a href="/contact">Reach out</a>
+
+<!-- Good - consistent -->
+<a href="/contact">Contact us</a>
+<a href="/contact">Contact us</a>
+```
+
+**Different destinations, different text:** Don't use identical text for links going to different pages.
+
+```html
+<!-- Bad -->
+<a href="/about">Learn more</a>
+<a href="/products">Learn more</a>
+
+<!-- Good -->
+<a href="/about">Learn more about our company</a>
+<a href="/products">Learn more about our products</a>
+```
+
+### Links Opening in New Windows
+
+When links open in new windows or tabs, inform all users:
+
+**For sighted users:**
+
+```html
+<a href="https://example.com" target="_blank" rel="noopener">
+  Visit example.com
+  <svg aria-hidden="true"><!-- external link icon --></svg>
+</a>
+```
+
+**For screen reader users:**
+
+```html
+<a href="https://example.com" target="_blank" rel="noopener">
+  Visit example.com
+  <span class="visually-hidden">(opens in new window)</span>
+</a>
+```
+
+### Focus Indicators
+
+All focusable elements **must** have a visible focus indicator. While browsers provide default focus styling (usually an outline), enhancing it improves usability for keyboard and low-vision users.
+
+```css
+a:focus {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}
+```
+
+## Navigation Between Pages
+
+Consistent navigation is crucial for user orientation and confidence.
+
+### Navigation Consistency
+
+**Maintain consistent location:** Keep navigation in the same position across all pages.
+
+**Maintain consistent order:** Don't reorder navigation items between pages.
+
+**Use semantic markup:** Wrap navigation in `<nav>` elements:
+
+```html
+<nav aria-label="Main">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+```
+
+### Indicating Current Page
+
+Provide clear visual indication of the current page:
+
+**For all users:**
+
+```css
+.nav-link[aria-current="page"] {
+  font-weight: bold;
+  text-decoration: underline;
+}
+```
+
+**In HTML:**
+
+```html
+<nav aria-label="Main">
+  <ul>
+    <li><a href="/" aria-current="page">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+  </ul>
+</nav>
+```
+
+You can also add visually hidden text for screen readers:
+
+```html
+<a href="/" aria-current="page">
+  Home
+  <span class="visually-hidden">(current page)</span>
+</a>
+```
+
+### Navigation Landmarks
+
+Use `<nav>` elements or `role="navigation"` to identify navigation regions. However:
+
+- Only label primary or important navigation areas
+- Don't overuse—too many navigation landmarks become confusing
+- Provide unique labels when multiple navigation areas exist
+
+```html
+<nav aria-label="Main">
+  <!-- Primary site navigation -->
+</nav>
+
+<nav aria-label="Footer">
+  <!-- Footer navigation -->
+</nav>
+```
+
+**Note:** When using `role="navigation"`, apply it to a container element that wraps your navigation list. This preserves the semantic meaning of the list for screen readers.
+
+## Navigation Within Pages
+
+Allow users to bypass repetitive content and jump directly to main content areas.
+
+### Skip Links
+
+Provide a skip link as the **first focusable element** on every page:
+
+```html
+<a href="#main-content" class="skip-link"> Skip to main content </a>
+
+<main id="main-content">
+  <!-- Page content -->
+</main>
+```
+
+**Visibility options:**
+
+- Visible at all times (most inclusive)
+- Visible only when focused (common pattern)
+
+**Never use `display: none`** to hide skip links—this prevents keyboard and screen reader users from accessing them.
+
+```css
+/* Good - visually hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+```
+
+### Tab Order
+
+Ensure the tab order is logical and intuitive:
+
+**Do:**
+
+- Follow natural reading order (top to bottom, left to right)
+- Use semantic HTML to create logical tab order
+- Allow `tabindex="0"` on non-interactive elements only when necessary
+
+**Don't:**
+
+- Use positive `tabindex` values (1, 2, 3, etc.)
+- Disrupt natural tab order
+- Remove focus indicators
+
+Positive `tabindex` values remove elements from the natural tab order and can severely disrupt navigation for keyboard users.
+
+### Pagination
+
+For paginated content, clearly indicate the current page:
+
+```html
+<nav aria-label="Pagination">
+  <ul>
+    <li><a href="?page=1">1</a></li>
+    <li>
+      <a href="?page=2" aria-current="page">
+        2
+        <span class="visually-hidden">(current page)</span>
+      </a>
+    </li>
+    <li><a href="?page=3">3</a></li>
+  </ul>
+</nav>
+```
+
+### Single-Key Shortcuts
+
+If your site implements single-key shortcuts (pressing a single character triggers an action), ensure one of these is true:
+
+- Users can **turn them off**
+- Users can **remap them** to alternative key combinations
+- Shortcuts are **only active when the relevant UI component has focus**
+
+This prevents conflicts with assistive technology shortcuts and accidental activation.
+
+## Conclusion
+
+Proper semantic markup for headings, links, and navigation creates a foundation for accessible web experiences. By following these guidelines, you ensure that all users—regardless of how they access your content—can navigate efficiently and understand your site's structure.
+
+Remember:
+
+- Use one `<h1>` per page and maintain heading hierarchy
+- Write descriptive, consistent link text
+- Keep navigation consistent across pages
+- Provide skip links and clear focus indicators
+- Test your navigation with keyboard-only interaction
+
+These practices benefit everyone, from keyboard users to screen reader users to those navigating in challenging environments.

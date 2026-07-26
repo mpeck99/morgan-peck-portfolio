@@ -1,0 +1,106 @@
+---
+title: "Bad Focus and Tab Order"
+slug: "bad-focus-tab-order-example"
+date: "2022-08-31"
+description: "An interactive demonstration showing how incorrect tab order can confuse and frustrate keyboard users."
+---
+
+Keyboard navigation is essential for many users, including those who can't use a mouse, those using screen readers, and those who simply prefer keyboard shortcuts. When developers manipulate the natural tab order using positive `tabindex` values, they create confusing and frustrating experiences that break the logical flow of content.
+
+This interactive example demonstrates what happens when tab order doesn't match visual order. By experiencing the problem firsthand, you'll understand why maintaining natural DOM order is so important for accessibility.
+
+## Why Tab Order Matters
+
+A logical, predictable tab order ensures your site can be navigated sequentially in a way that preserves meaning and operability. When the DOM order doesn't match the visual order, it creates significant barriers for:
+
+**Keyboard-only users:** Those who navigate using Tab, Shift+Tab, and Enter keys need predictable navigation that matches what they see on screen.
+
+**Screen reader users:** When focus jumps unexpectedly, screen readers announce content out of order, creating confusion about page structure and relationships.
+
+**Users with cognitive disabilities:** Unpredictable navigation increases cognitive load and makes it harder to understand and interact with content.
+
+**Power users:** Anyone using keyboard shortcuts for efficiency expects consistent, logical tab order.
+
+## Experience the Problem
+
+> The original live version of this post included an interactive demo: four headings appear in visual order top to bottom, but each was given a manipulated `tabindex`, so pressing Tab repeatedly jumped focus around instead of following the visual order. That live widget still needs to be rebuilt here — see the note at the end of this post.
+
+## What's Wrong Here?
+
+In the original demo, the unpredictable jumping happened because the page used positive `tabindex` values on the headings:
+
+- **First heading** (visually): `tabindex="16"` - focuses third
+- **Second heading** (visually): `tabindex="100"` - focuses fourth (last)
+- **Third heading** (visually): `tabindex="10"` - focuses first
+- **Fourth heading** (visually): `tabindex="11"` - focuses second
+
+The actual tab order becomes: Third → Fourth → First → Second
+
+This creates a disorienting experience where visual presentation and keyboard navigation are completely disconnected.
+
+## The Right Way: Natural Tab Order
+
+**Never use positive `tabindex` values (1, 2, 3, etc.).** They override the natural DOM order and create unpredictable, inaccessible navigation patterns.
+
+### Best Practices for Tab Order
+
+**Use semantic HTML in logical order:**
+
+```html
+<h2>First heading</h2>
+<p>Content for first section...</p>
+
+<h2>Second heading</h2>
+<p>Content for second section...</p>
+
+<h2>Third heading</h2>
+<p>Content for third section...</p>
+```
+
+**Understand tabindex values:**
+
+- **No tabindex** - Element follows natural DOM order (preferred for most elements)
+- **`tabindex="0"`** - Makes non-interactive elements focusable in natural DOM order
+- **`tabindex="-1"`** - Removes element from tab order but allows programmatic focus
+- **`tabindex="1+"` (positive values)** - Never use; disrupts natural order
+
+**Structure your HTML correctly:** The visual reading order should match the DOM order. If you need to change visual layout, use CSS (flexbox, grid, positioning) rather than manipulating HTML structure or tab order.
+
+**Test your tab order:**
+
+- Navigate your entire site using only the Tab key
+- Ensure focus moves in a logical, predictable sequence
+- Verify that focus indicators are always visible
+- Check that all interactive elements are reachable
+
+## Real-World Impact
+
+Poor tab order isn't just inconvenient—it can make content completely unusable:
+
+**Forms with broken tab order:** Users can't complete forms if tab order jumps between unrelated fields or skips required inputs.
+
+**Navigation menus with manipulated order:** Users can't access all menu items or find themselves trapped in navigation loops.
+
+**Modal dialogs without focus management:** Users can't efficiently interact with dialogs when focus escapes or jumps unpredictably.
+
+**Single-page applications:** Dynamic content updates that don't maintain logical tab order create confusion and accessibility barriers.
+
+## Conclusion
+
+Natural, logical tab order is fundamental to keyboard accessibility. By structuring your HTML in reading order and avoiding positive `tabindex` values, you create predictable navigation that works for everyone.
+
+**Key takeaways:**
+
+- Never use positive `tabindex` values—they break accessibility
+- Structure HTML in logical reading order that matches visual presentation
+- Use CSS for visual layout changes, not HTML reordering
+- Test keyboard navigation on every page
+- Let the browser handle tab order naturally whenever possible
+
+Remember: if you're tempted to use `tabindex` to fix tab order, you likely have a structural HTML problem that should be fixed at the source. Build your content in logical order from the start, and tab order will work correctly by default.
+
+The best tab order is the one users don't have to think about—predictable, logical, and matching exactly what they see on screen.
+
+---
+
+*Note: this post originally included a live interactive demo of broken tab order. Rebuilding that demo as a React component is a good follow-up task once the rest of the blog is migrated.*

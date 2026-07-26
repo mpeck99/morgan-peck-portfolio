@@ -1,0 +1,348 @@
+---
+title: "Images and Alternative Text"
+slug: "images-alt-text"
+date: "2022-04-06"
+description: "Learn how to write effective alternative text for images to ensure your content is accessible to all users, including those using screen readers."
+---
+
+Images are a fundamental part of web content, but not everyone can access them visually. Users who are blind rely on screen readers to listen to alternative text descriptions, while users who are deafblind use refreshable braille displays to read these descriptions. As developers, we must ensure that every meaningful image has appropriate alternative text.
+
+This guide focuses on images and alternative text best practices. Future guides will cover SVGs, icon fonts, HTML5 Canvas, multimedia objects, and documents.
+
+## Why Alternative Text Matters
+
+Alternative text (alt text) serves multiple purposes:
+
+- Provides context for users who can't see images
+- Displays when images fail to load
+- Improves SEO by helping search engines understand image content
+- Creates a better experience for users on slow connections
+
+Well-written alt text makes your content accessible to everyone, regardless of how they access your site.
+
+## Alternative Text Best Practices
+
+Effective alternative text should be:
+
+**Programmatically determinable:** Screen readers must be able to access it through proper HTML attributes.
+
+**Meaningful:** Accurately describe the image's purpose or the information it conveys.
+
+**Concise:** Keep descriptions under 150 characters when possible. Longer descriptions can be provided separately for complex images.
+
+**Natural:** Don't include redundant phrases like "image of," "link to," or "graphic of"—screen readers already announce the element type.
+
+### Writing Good Alt Text
+
+When creating alt text, ask yourself:
+
+- Why is this image here?
+- What information does it present?
+- What purpose does it serve?
+- If I couldn't see this image, what words would convey the same information?
+
+### The 150 Character Guideline
+
+While there's no technical limit on alt text length, keeping it under 150 characters is recommended because:
+
+- Screen readers can't resume if a user pauses mid-description
+- Users can't navigate long alt text word by word
+- Some older screen readers truncate long alt text
+- Brief descriptions are faster to consume
+
+For images requiring longer explanations, use supplementary long descriptions (covered later).
+
+**Note:** Always include an `alt` attribute, even if empty. Without it, screen readers will announce the filename, which is rarely helpful and often confusing.
+
+## Methods for Adding Alt Text
+
+Alt text can be added using several methods, listed in order of precedence:
+
+1. **`aria-labelledby`** - References another element's text; overrides all other methods
+2. **`aria-label`** - Provides a custom label; overrides `alt` and `title`
+3. **`alt`** - Standard method for images; won't be read if `aria-label` or `aria-labelledby` exist
+4. **`title`** - Read only if no other methods are present (not recommended)
+
+### Why to Avoid `title`
+
+The `title` attribute is unreliable for accessibility:
+
+- VoiceOver on macOS may read it as extra description in addition to the accessible name
+- NVDA and JAWS ignore it when other methods are present
+- It's not consistently supported across assistive technologies
+- It only appears on hover, making it inaccessible to touch screen and keyboard users
+
+**Recommendation:** Use `alt` for standard alt text. Use `aria-labelledby` or `aria-label` only when you need to reference external text or provide a different description than what's appropriate for the `alt` attribute.
+
+## Informative Images
+
+Informative images convey content or important information. These images must have programmatically determinable alternative text.
+
+### Images Must Have Alt Text
+
+Every image that provides information requires alternative text using one of the methods above.
+
+```html
+<img src="/logo-mp-colorful.svg" alt="Morgan Peck Logo" />
+```
+
+This image has descriptive alt text identifying it as the Morgan Peck logo, helping users understand its purpose immediately.
+
+```html
+<img src="/logo-mp-colorful.svg" />
+```
+
+Without alt text, screen readers announce "Image mp-logo-angle-2-1.png," which provides no useful information and creates a poor user experience.
+
+### Alt Text Guidelines for Different Image Types
+
+**Logos:** Identify the organization or brand
+`alt="Morgan Peck Logo"`
+
+**Photos of people:** Describe who's in the photo and what they're doing
+`alt="Sarah presenting at the annual conference"`
+
+**Product images:** Describe the product
+`alt="Blue ceramic coffee mug with white handle"`
+
+**Infographics:** Provide a brief summary in alt text and a full text alternative nearby
+`alt="Infographic showing web accessibility statistics. Full description below."`
+
+**Screenshots:** Describe what the screenshot shows
+`alt="Settings panel with dark mode toggle enabled"`
+
+## Actionable Images
+
+Actionable images—images used as buttons or links—must have alternative text that describes their function, not their appearance.
+
+WCAG Success Criterion 1.1.1 states: "If non-text content is a control or accepts user input, then it has a name that describes its purpose."
+
+```html
+<button>
+  <img src="/submit-button.png" alt="Submit" />
+</button>
+```
+
+This alt text clearly describes the button's action, helping users understand what will happen when they activate it.
+
+```html
+<button>
+  <img src="/submit-button.png" alt="Pink oval with bevels" />
+</button>
+```
+
+This alt text describes appearance instead of function. Users won't know the button submits a form—they only know it's a pink oval, which isn't useful information.
+
+### Better Alternatives
+
+Instead of using images for buttons, consider:
+
+- Using CSS-styled `<button>` elements with text
+- Using icon fonts with appropriate `aria-label` attributes
+- Using SVG icons with proper accessible names
+
+These approaches provide better flexibility, performance, and accessibility.
+
+## Animated Images
+
+Animated images must not flash or flicker more than three times per second. Rapid flashing can trigger seizures in people with photosensitive epilepsy or other seizure disorders.
+
+### Testing Animations
+
+Use the [Photosensitive Epilepsy Analysis Tool (PEAT)](http://trace.umd.edu/peat) to test your animations and videos for seizure risks. This free tool analyzes content and identifies potentially dangerous flash patterns.
+
+### WCAG Requirements
+
+WCAG Success Criterion 2.3.1 (Three Flashes or Below Threshold) requires that content doesn't flash more than three times per second, or that flashes are below general flash and red flash thresholds.
+
+## Auto-Playing Video
+
+Videos that auto-play must provide a way to pause, stop, or hide the content.
+
+### Why This Matters
+
+Auto-playing videos without controls create barriers for:
+
+- Users with cognitive disabilities who find movement distracting
+- Users with attention disorders
+- Screen reader users trying to hear their assistive technology
+- Users in quiet environments
+- Users with limited bandwidth
+
+### Best Practices
+
+- Provide visible pause/stop controls
+- Limit auto-play duration to 5 seconds or less
+- Mute videos by default
+- Consider not auto-playing at all—let users choose to start videos
+
+## Complex Images
+
+Complex images contain detailed data like charts, graphs, diagrams, or infographics. These require both brief alt text and a more complete long description.
+
+### Requirements for Complex Images
+
+**Brief alt text:** Summarize the image and indicate that a full description is available
+**Long description:** Provide complete information about the data or content
+
+### Methods for Providing Long Descriptions
+
+**In-context description (preferred):** Provide the description in the regular page content near the image.
+
+**Expandable region:** Use a button to show/hide the full description.
+
+**Dialog:** Open a modal with the complete description.
+
+**Separate page:** Link to another page containing the full description.
+
+**Best practice:** Make long descriptions visible to all users and programmatically associate them with the image using `aria-describedby`.
+
+### Example
+
+```html
+<img
+  src="chart.png"
+  alt="Bar chart showing monthly percentages. Extended description below."
+  aria-describedby="chart-description"
+/>
+
+<div id="chart-description">
+  <h3>Chart Data</h3>
+  <p>Monthly percentage breakdown:</p>
+  <ul>
+    <li>January: 14%</li>
+    <li>February: 10%</li>
+    <li>March: 9%</li>
+    <li>April: 18%</li>
+    <li>May: 3%</li>
+    <li>June: 1%</li>
+    <li>July: 20%</li>
+    <li>August: 8%</li>
+    <li>September: 7%</li>
+    <li>October: 4%</li>
+    <li>November: 3%</li>
+    <li>December: 3%</li>
+  </ul>
+</div>
+```
+
+The `aria-describedby` attribute creates a programmatic relationship between the image and its long description, ensuring screen readers can access the full information.
+
+## Images of Text
+
+Avoid using images to display text whenever possible. Real text is always preferable because it:
+
+- Scales without losing quality
+- Can be translated
+- Can be customized by users (font, color, size)
+- Loads faster
+- Is more accessible
+
+### When Images of Text Are Acceptable
+
+**Logos:** Logos containing text are acceptable for branding purposes.
+
+**Essential presentation:** When specific visual presentation is essential to the information (like showing examples of different fonts).
+
+### If You Must Use Images of Text
+
+Ensure the text within the image is also represented as real text elsewhere on the page, either:
+
+- In nearby visible text
+- In the alt attribute
+- In an associated long description
+
+## Decorative Images
+
+Decorative images don't convey information or serve a functional purpose. They're purely aesthetic.
+
+### Hiding Decorative Images
+
+Use an empty `alt` attribute to hide decorative images from screen readers:
+
+```html
+<img src="decorative-flourish.png" alt="" />
+```
+
+**Important:** Always include the `alt` attribute, even when empty. Without it, screen readers will announce the filename.
+
+### What Qualifies as Decorative?
+
+- Borders, corners, or dividers
+- Stock photos used for visual interest without conveying specific information
+- Decorative patterns or textures
+- Spacer images
+- Purely aesthetic illustrations
+
+### CSS Background Images
+
+Decorative images should often be CSS background images instead of HTML `<img>` elements. CSS backgrounds are automatically ignored by screen readers and don't require empty alt attributes.
+
+```css
+.hero-section {
+  background-image: url("decorative-pattern.png");
+}
+```
+
+## Image Maps
+
+Image maps are images divided into clickable regions, each linking to different destinations.
+
+### Alt Text for Image Maps
+
+The main image requires alt text that:
+
+- Describes the overall purpose of the image map
+- Provides brief usage instructions if needed
+- Stays under 150 characters when possible
+
+### Requirements for Clickable Areas
+
+Each `<area>` element must have its own alt text describing its destination or purpose:
+
+```html
+<img
+  src="navigation-map.png"
+  alt="Site navigation. Select a section to visit."
+  usemap="#nav-map"
+/>
+
+<map name="nav-map">
+  <area shape="rect" coords="0,0,100,50" href="/about" alt="About us" />
+  <area
+    shape="rect"
+    coords="100,0,200,50"
+    href="/services"
+    alt="Our services"
+  />
+  <area shape="rect" coords="200,0,300,50" href="/contact" alt="Contact us" />
+</map>
+```
+
+### Client-Side vs. Server-Side Image Maps
+
+Always use client-side image maps (with `<map>` and `<area>` elements) instead of server-side image maps. Client-side maps:
+
+- Work without JavaScript
+- Are accessible to keyboard users
+- Provide individual alt text for each region
+- Show link destinations on hover
+
+Server-side image maps require mouse coordinates and aren't accessible.
+
+## Conclusion
+
+Alternative text is essential for creating accessible web content. By following these guidelines, you ensure that all users—regardless of how they access your site—can understand and interact with your images.
+
+**Key takeaways:**
+
+- Every informative image needs meaningful alt text
+- Keep alt text concise (under 150 characters when possible)
+- Describe function for actionable images, not appearance
+- Provide long descriptions for complex images
+- Use empty alt attributes (`alt=""`) for decorative images
+- Avoid images of text; use real text instead
+- Ensure animations don't flash more than 3 times per second
+- Make auto-playing videos pausable
+
+Well-written alt text benefits everyone: users with disabilities, users on slow connections, users whose images fail to load, and search engines indexing your content. It's a small effort that makes a significant difference in accessibility and user experience.

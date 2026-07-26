@@ -1,4 +1,4 @@
-import ProjectCard from "@/components/blocks/ProjectCard";
+import ProjectCard from "@/components/blocks/ProjectCard/ProjectCard";
 import Container from "@/components/layout/Container/Container";
 import Grid from "@/components/layout/Grid/Grid";
 import Section from "@/components/layout/Section/Section";

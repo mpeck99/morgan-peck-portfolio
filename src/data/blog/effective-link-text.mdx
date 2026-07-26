@@ -1,0 +1,216 @@
+---
+title: "Writing Effective Link Text"
+slug: "effective-link-text"
+date: "2022-08-31"
+description: "Learn how to write clear, descriptive link text that helps all users understand where links lead and what they do."
+---
+
+Links are the foundation of web navigation, but poorly written link text creates barriers for many users. Effective link text should be programmatically determinable and clearly describe the link's purpose or destination without requiring surrounding context.
+
+When you use ambiguous phrases like "click here," "more," or "read more," users—especially those using screen readers—can't determine where the link leads without reading the surrounding content. This forces them to work harder to understand your site's navigation and can lead to confusion and frustration.
+
+This guide covers best practices for writing link text that works for everyone.
+
+## Why Link Text Matters
+
+Clear, descriptive link text benefits all users:
+
+**Screen reader users:** Many navigate by listing all links on a page. Out of context, "click here" provides no information about the link's destination.
+
+**Keyboard users:** When tabbing through links, descriptive text helps users decide whether to activate each link without reading surrounding content.
+
+**Users with cognitive disabilities:** Clear, specific link text reduces cognitive load and makes navigation more intuitive.
+
+**Search engines:** Descriptive link text helps search engines understand your site structure and content relationships.
+
+**Everyone:** When skimming a page, descriptive links help users quickly find what they're looking for.
+
+## Link Text Best Practices
+
+Follow these principles to create effective, accessible link text:
+
+### Be Descriptive and Specific
+
+Link text should describe the destination or action clearly:
+
+**Good examples:**
+
+- `<a href="/pricing">View pricing plans</a>`
+- `<a href="/report.pdf">Download the annual report (PDF, 2.3MB)</a>`
+- `<a href="/about">Learn about our company</a>`
+
+**Bad examples:**
+
+- `<a href="/pricing">Click here</a>` - Doesn't describe destination
+- `<a href="/report.pdf">Download</a>` - Too vague; doesn't specify what
+- `<a href="/about">More</a>` - Meaningless without context
+
+### Avoid Redundant Phrases
+
+Don't include "link," "link to," or "click here" in link text. Screen readers already announce that something is a link, making these phrases redundant.
+
+**Good:**
+
+```html
+<a href="/contact">Contact us</a>
+```
+
+**Bad:**
+
+```html
+<a href="/contact">Click here to contact us</a>
+```
+
+Screen readers announce: "Click here to contact us, link" - the word "click" and phrase structure are redundant.
+
+### Keep It Concise
+
+Link text should be brief while remaining descriptive. Long link text becomes tedious for screen reader users who navigate by links.
+
+**Good:**
+
+```html
+<a href="/accessibility-guide">Read our accessibility guide</a>
+```
+
+**Avoid:**
+
+```html
+<a href="/accessibility-guide">Click this link to read our comprehensive guide about web accessibility best practices and WCAG compliance</a>
+```
+
+### Be Consistent
+
+**Same destination = same link text**
+
+Links leading to the same page should use identical text. These links go to the same page but use different text, which confuses users:
+
+```html
+<a href="contact.html">Our Company</a> <a href="contact.html">Contact Us</a>
+```
+
+Users might think these lead to different pages when they actually go to the same place.
+
+**Different destinations = different link text**
+
+Links leading to different pages must use different text. These links go to different pages but use identical text, making it impossible to distinguish them:
+
+```html
+<a href="directory.html">Contact Us</a>
+<a href="contact-form.html">Contact Us</a>
+```
+
+Users can't tell these links apart without reading surrounding context. Instead, make each link's purpose clear through distinct text:
+
+```html
+<a href="directory.html">View our office directory</a>
+<a href="contact-form.html">Send us a message</a>
+```
+
+Users immediately understand what each link does without needing additional context.
+
+### Provide Context for File Downloads
+
+When linking to downloadable files, include the file type and size:
+
+```html
+<a href="/report.pdf">Annual report (PDF, 2.3MB)</a>
+<a href="/data.xlsx">Sales data (Excel, 450KB)</a>
+```
+
+This helps users decide whether to download the file, especially those on limited bandwidth or mobile devices.
+
+### Indicate External Links
+
+When links open external sites, inform users:
+
+```html
+<a href="https://example.com" target="_blank" rel="noopener">
+  Visit example.com
+  <span class="visually-hidden">(opens in new window)</span>
+</a>
+```
+
+Or use an icon with appropriate alt text to indicate external links visually.
+
+### Special Cases
+
+**Email links:**
+
+```html
+<a href="mailto:support@example.com">Email our support team</a>
+```
+
+**Phone links:**
+
+```html
+<a href="tel:+15551234567">Call us at (555) 123-4567</a>
+```
+
+**Multiple links in repeated content:**
+
+When you have multiple items with the same structure (like blog posts), make each link unique:
+
+**Bad:**
+
+```html
+<article>
+  <h3>Post Title 1</h3>
+  <p>Summary...</p>
+  <a href="/post-1">Read more</a>
+</article>
+<article>
+  <h3>Post Title 2</h3>
+  <p>Summary...</p>
+  <a href="/post-2">Read more</a>
+</article>
+```
+
+**Good:**
+
+```html
+<article>
+  <h3>Post Title 1</h3>
+  <p>Summary...</p>
+  <a href="/post-1">Read Post Title 1</a>
+</article>
+<article>
+  <h3>Post Title 2</h3>
+  <p>Summary...</p>
+  <a href="/post-2">Read Post Title 2</a>
+</article>
+```
+
+Or use `aria-label`:
+
+```html
+<article>
+  <h3>Post Title 1</h3>
+  <p>Summary...</p>
+  <a href="/post-1" aria-label="Read Post Title 1">Read more</a>
+</article>
+```
+
+## Testing Your Link Text
+
+To verify your link text is effective:
+
+1. **List all links:** Use a screen reader or browser extension to list all links on the page
+2. **Read them out of context:** Can you understand each link's purpose without surrounding text?
+3. **Check for duplicates:** Do any links have identical text but different destinations?
+4. **Verify consistency:** Do links to the same destination use the same text?
+
+## Conclusion
+
+Writing effective link text is a simple but crucial aspect of web accessibility. Clear, descriptive links benefit everyone by making navigation more efficient and reducing confusion.
+
+**Key takeaways:**
+
+- Make link text descriptive and specific
+- Avoid redundant phrases like "click here" or "link to"
+- Use consistent text for links to the same destination
+- Use unique text for links to different destinations
+- Include file type and size for downloads
+- Test by reading link text out of context
+
+Remember: if your link text doesn't make sense when read alone, it needs improvement. Good link text should be self-explanatory without requiring users to read surrounding content. This small attention to detail makes a significant difference in creating an accessible, user-friendly website.

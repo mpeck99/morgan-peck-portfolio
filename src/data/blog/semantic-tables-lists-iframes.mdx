@@ -1,0 +1,373 @@
+---
+title: "Tables, Lists, and Iframes"
+slug: "semantic-tables-lists-iframes"
+date: "2022-08-28"
+description: "Learn how to properly structure tables, lists, and iframes to make your content accessible to all users, including those using screen readers."
+---
+
+Semantic HTML means using the right HTML elements for their intended purpose. When we properly mark up our content, we ensure that everyone—including people using screen readers, keyboard navigation, or other assistive technologies—can access and understand our websites.
+
+This guide covers three fundamental building blocks of accessible content:
+
+- **Lists** for grouping related information
+- **Tables** for organizing complex data
+- **Iframes** for embedding external content
+
+Let's explore how to implement each of these correctly.
+
+## Why Semantic HTML Matters
+
+Semantic HTML ensures your content is:
+
+- **Accessible** to screen reader users who navigate by element type
+- **Structured** so relationships between content are clear
+- **Maintainable** with meaning built into the code, not just visual styling
+
+Visual styling alone isn't enough—assistive technologies need proper HTML structure to understand your content.
+
+## Lists
+
+Lists tell screen readers "here's a group of related items" and announce how many items to expect. Use the appropriate list type:
+
+- `<ol>` - Ordered list for when order matters (steps, rankings)
+- `<ul>` - Unordered list for when order doesn't matter (features, benefits)
+- `<dl>` - Definition list when pairing terms with definitions
+  - `<dt>` - term name
+  - `<dd>` - term definition
+
+When a screen reader user comes across a list, it will notify them that it's a list and how many items it contains. This helps users understand the structure and know what to expect.
+
+### Why Lists Matter
+
+When screen readers encounter a list, they announce:
+
+- That it's a list
+- What type of list it is
+- How many items it contains
+
+This context helps users understand the content structure and decide whether to explore the list or skip it.
+
+**Never create fake lists** using line breaks or manual numbering—these lose all semantic meaning and accessibility benefits.
+
+## List examples
+
+### Good semantic lists
+
+#### Ordered list
+
+```html
+<ol>
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ol>
+```
+
+#### Unordered list
+
+```html
+<ul>
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ul>
+```
+
+#### Definition list
+
+```html
+<dl>
+  <dt>Term 1</dt>
+  <dd>Some cool term definition</dd>
+</dl>
+```
+
+## Bad semantic list
+
+```html
+<p>1. Bad list item<br /><br />2. Bad list item<br /><br />3. Bad list item</p>
+```
+
+This appears visually as a list but screen readers will read it as a single paragraph with line breaks. Users won't know how many items there are or be able to navigate through them efficiently.
+
+## Tables
+
+Tables are their own beast. They're challenging to make fully accessible, but following best practices makes a significant difference. The goal is to make them as accessible as possible by ensuring they have:
+
+- Table headers using `<th>` elements
+- Rows (`<tr>`) and data cells (`<td>`)
+- Proper `scope` attributes to associate data with headers
+- A title using `aria-labelledby` linking to a visible heading, or `aria-label` or `<caption>` if no visible heading exists
+
+### Table Fundamentals
+
+**Use semantic tables:** Always use the `<table>` element for tabular data. Never create "fake tables" using divs and CSS that look like tables but lack semantic meaning.
+
+**Don't use tables for layout:** Tables should only be used for data, never for page layout. All layout should be accomplished with CSS.
+
+### Table Labels
+
+Every table must be labeled using one of these methods:
+
+**Caption (preferred):**
+
+```html
+<table>
+  <caption>
+    Personal Running Bests
+  </caption>
+  <!-- table content -->
+</table>
+```
+
+**aria-label:**
+
+```html
+<table aria-label="Personal Running Bests">
+  <!-- table content -->
+</table>
+```
+
+**aria-labelledby:**
+
+```html
+<h2 id="results">Personal Running Bests</h2>
+<table aria-labelledby="results">
+  <!-- table content -->
+</table>
+```
+
+Labels help screen reader users:
+
+- Identify tables when listing all tables on a page
+- Distinguish between multiple tables
+- Understand the table's purpose before exploring its content
+
+### Table Headers
+
+Designate headers using `<th>` elements and specify their scope:
+
+**Column headers:** `scope="col"`
+**Row headers:** `scope="row"`
+**Column groups:** `scope="colgroup"`
+**Row groups:** `scope="rowgroup"`
+
+The `scope` attribute helps screen readers announce the correct header when reading data cells.
+
+### Tips for Accessible Tables:
+
+- Keep tables simple when possible—complex tables are harder to navigate
+- Don't use tables for layout purposes
+- Ensure table headers clearly describe their column or row
+- Test with a screen reader if possible
+
+## Basic table example
+
+| Name  | 1 mile | 5 km  | 10 km   |
+| ----- | ------ | ----- | ------- |
+| Mary  | 8:32   | 28:04 | 1:01:16 |
+| Betsy | 7:43   | 26:47 | 55:38   |
+
+```html
+<table class="table" tabindex="0" aria-labelledby="basic-table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">1 mile</th>
+      <th scope="col">5 km</th>
+      <th scope="col">10 km</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mary</td>
+      <td>8:32</td>
+      <td>28:04</td>
+      <td>1:01:16</td>
+    </tr>
+    <tr>
+      <td>Betsy</td>
+      <td>7:43</td>
+      <td>26:47</td>
+      <td>55:38</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Table with group headers example
+
+This example uses `colspan` to group two sub-columns under each top-level heading, and `scope="row"` to label each row:
+
+```html
+<table class="table table-colgroup" tabindex="0" aria-labelledby="group-headers">
+  <thead>
+    <tr>
+      <td rowspan="2">&nbsp</td>
+      <th colspan="2" scope="colgroup" class="theader">Heading 1</th>
+      <th colspan="2" scope="colgroup" class="theader">Heading 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Heading 3</th>
+      <td colspan="2">Data</td>
+      <td colspan="2">Data</td>
+    </tr>
+    <tr>
+      <th scope="row">Heading 4</th>
+      <td colspan="2">Data</td>
+      <td colspan="2">Data</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Complex table example
+
+If a table has complex data, you'll need to use `headers` and `id` attributes to explicitly associate data cells with their headers. This helps screen readers announce the correct context for each cell.
+
+```html
+<table class="table-complex" tabindex="0" aria-labelledby="complex">
+  <thead>
+    <tr>
+      <th rowspan="3" id="h1">Header 1</th>
+      <th colspan="3" id="h2">Header 2</th>
+    </tr>
+    <tr>
+      <th id="s1">Subheader 1</th>
+      <th id="s2">Subheader 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" id="row1" headers="h1">Row header 1</th>
+      <td headers="row1 h2 s1">Data 1</td>
+      <td headers="h2 s2 row1">Data 2</td>
+    </tr>
+    <tr>
+      <th scope="row" id="row2" headers="h1">Row header 2</th>
+      <td headers="h2 s1 row2">Data 3</td>
+      <td headers="h2 s2 row2">Data 4</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Table Best Practices
+
+**Do:**
+
+- Use `<table>` for tabular data
+- Provide meaningful captions or labels
+- Use `<th>` with appropriate `scope` attributes
+- Keep tables as simple as possible
+- Use `<thead>`, `<tbody>`, and `<tfoot>` to group content
+
+**Don't:**
+
+- Create nested tables—they break data relationships
+- Split tables across multiple `<table>` elements
+- Use tables for page layout
+- Create fake tables with divs and CSS
+
+## Iframes
+
+Iframes embed content from other sources into your page, creating a "window" to external content. Common uses include:
+
+- Video embeds (YouTube, Vimeo)
+- Maps
+- Social media feeds
+- Custom widgets
+- Third-party applications
+
+### Iframe Requirements
+
+Every iframe **must** have a `title` attribute that is:
+
+- **Informative:** Describes the iframe's content or purpose
+- **Unique:** Distinguishes it from other iframes on the page
+- **Meaningful:** Helps users understand what the iframe contains
+- **Non-empty:** Never use an empty title attribute
+
+**Good examples:**
+
+```html
+<iframe src="..." title="Location map for our office"></iframe>
+<iframe src="..." title="Customer testimonials video"></iframe>
+<iframe src="..." title="Twitter feed for @company"></iframe>
+```
+
+**Bad examples:**
+
+```html
+<iframe src="..."></iframe>
+<!-- Missing title -->
+<iframe src="..." title=""></iframe>
+<!-- Empty title -->
+<iframe src="..." title="iframe"></iframe>
+<!-- Non-descriptive -->
+<iframe src="..." title="Content"></iframe>
+<!-- Too vague -->
+```
+
+### Iframe Content Considerations
+
+**If you control the iframe content:**
+
+- Ensure heading hierarchy fits logically within the parent page
+- Maintain consistent styling and navigation patterns
+- Verify the embedded content is accessible
+
+**If you don't control the content:**
+
+- Provide context around the iframe
+- Test with assistive technology when possible
+- Consider alternatives if the embedded content isn't accessible
+
+### Decorative Iframes
+
+If an iframe is purely decorative and conveys no information, hide it from assistive technology:
+
+```html
+<iframe src="..." title="Decorative animation" aria-hidden="true"></iframe>
+```
+
+Or use CSS:
+
+```css
+.decorative-iframe {
+  display: none;
+}
+```
+
+Hide non-informative iframes using one of these methods:
+
+- `aria-hidden="true"`
+- `display: none`
+- `visibility: hidden`
+
+## Paragraphs and Text Markup
+
+All text content should be wrapped in appropriate HTML elements:
+
+- **Paragraphs**: Use `<p>` tags for body text
+- **Emphasis**: Use `<em>` for vocal stress (screen readers may change tone)
+- **Strong importance**: Use `<strong>` for important content
+- **Code**: Use `<code>` for inline code snippets
+
+Never rely on line breaks (`<br>`) or divs to create paragraphs—use proper `<p>` elements and CSS for spacing.
+
+## Conclusion
+
+Using semantic HTML isn't just about following rules—it's about ensuring everyone can access your content. By properly marking up lists, tables, iframes, and text, you create a better experience for all users, especially those relying on assistive technologies.
+
+**Key takeaways:**
+
+- Choose the appropriate list type for your content structure
+- Use `<table>` only for tabular data, with proper headers and scope
+- Provide meaningful `title` attributes for all iframes
+- Wrap all text in semantic elements like `<p>`, not divs
+- Test your markup with screen readers when possible
+
+These practices benefit everyone by creating clearer, more maintainable, and more accessible websites.

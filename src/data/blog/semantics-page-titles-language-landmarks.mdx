@@ -1,0 +1,327 @@
+---
+title: "Page Titles, Language, and Landmarks"
+slug: "semantics-page-titles-language-landmarks"
+date: "2022-03-30"
+description: "Learn how page titles, language attributes, and landmark regions create an accessible foundation for screen reader navigation."
+---
+
+Every accessible website needs a solid foundation. Page titles, language attributes, and landmark regions form this foundation by helping assistive technology users understand and navigate your content efficiently.
+
+This guide covers three essential elements that make your pages accessible and navigable for everyone.
+
+## Page Titles
+
+A descriptive page title is required to meet WCAG Level A conformance. The `<title>` element is the first thing screen reader users hear when a page loads, making it critical for orientation and understanding.
+
+### Characteristics of Effective Titles
+
+An effective page title should be:
+
+- **Accurate:** Reflects the actual page content
+- **Informative:** Describes the page's purpose clearly
+- **Concise:** Brief enough to be quickly understood
+- **Unique:** Different from other pages on your site
+- **Consistent with the H1:** Matches or closely resembles the main heading
+
+### Title Structure Patterns
+
+**Home page:**
+
+```html
+<title>Morgan Peck | Web Accessibility Specialist</title>
+```
+
+**Subpage:**
+
+```html
+<title>Designing Accessible User Experiences | Blog | Morgan Peck</title>
+```
+
+**Pattern:** `[Page Name] | [Section] | [Site Name]`
+
+This pattern provides context while keeping the most important information (page name) first. When users have multiple tabs open, they can quickly identify pages by scanning the beginning of each title.
+
+### Dynamic Title Updates
+
+When content changes dynamically (such as in single-page applications), update the page title to reflect the new content. This helps users understand context when they use browser history or bookmarks.
+
+### Why Titles Matter
+
+Page titles serve multiple purposes:
+
+- Screen readers announce them immediately on page load
+- Browser tabs display them for identification
+- Search engines use them for results
+- Bookmarks save them for future reference
+- Browser history lists them for navigation
+
+Without descriptive titles, users must work harder to identify and navigate between pages.
+
+## Language Attributes
+
+Declaring the page language is essential for screen readers to pronounce content correctly. Without a language declaration, screen readers may use the user's default language settings, resulting in incorrect pronunciation and comprehension difficulties.
+
+### Page Language Declaration
+
+Declare the primary language using a valid two-character language code on the `<html>` element:
+
+```html
+<html lang="en"></html>
+```
+
+**Common language codes:**
+
+- `en` - English
+- `es` - Spanish
+- `fr` - French
+- `de` - German
+- `ja` - Japanese
+- `zh` - Chinese
+
+For a complete list of valid language codes, refer to the [Language Subtag Registry](https://r12a.github.io/app-subtags/).
+
+### Language Variants
+
+You can specify regional variants when needed:
+
+```html
+<html lang="en-US"><!-- US English --></html>
+<html lang="en-GB"><!-- British English --></html>
+<html lang="es-MX"><!-- Mexican Spanish --></html>
+```
+
+### Inline Language Changes
+
+When content includes text in a different language, mark it with the appropriate `lang` attribute. This applies to both inline and block-level elements:
+
+**Inline example:**
+
+```html
+<p>The French word for hello is <span lang="fr">bonjour</span>.</p>
+```
+
+**Block example:**
+
+```html
+<blockquote lang="es">
+  <p>
+    Aquí hay una pequeña oración simple para mostrar un ejemplo de lenguaje en
+    bloque.
+  </p>
+</blockquote>
+```
+
+### Why Language Matters
+
+Proper language declaration ensures:
+
+- Correct pronunciation by screen readers
+- Appropriate voice synthesis
+- Better translation tool accuracy
+- Improved search engine indexing
+- Correct automatic hyphenation and spell-checking
+
+Without language attributes, screen readers may pronounce foreign words using incorrect phonetics, making content incomprehensible.
+
+## Landmarks
+
+Landmarks are semantic regions that define the structure of your page. They allow screen reader users to navigate efficiently by jumping directly to specific sections rather than listening to everything sequentially.
+
+### Primary Landmark Elements
+
+**Header:**
+
+```html
+<header>
+  <!-- Site logo, navigation, search -->
+</header>
+```
+
+ARIA equivalent: `<div role="banner">`
+
+**Navigation:**
+
+```html
+<nav>
+  <!-- Navigation links -->
+</nav>
+```
+
+ARIA equivalent: `<div role="navigation">`
+
+**Main Content:**
+
+```html
+<main>
+  <!-- Primary page content -->
+</main>
+```
+
+ARIA equivalent: `<div role="main">`
+
+**Footer:**
+
+```html
+<footer>
+  <!-- Copyright, contact info, footer navigation -->
+</footer>
+```
+
+ARIA equivalent: `<div role="contentinfo">`
+
+**Additional Landmarks:**
+
+- `<aside>` or `role="complementary"` - Supporting content
+- `<section>` - Thematic groupings of content
+- `<article>` - Self-contained, independently distributable content
+- `<form>` or `role="search"` - Search functionality
+
+### Best Practices
+
+**Prefer native HTML elements:** Always use native HTML5 elements (`<header>`, `<nav>`, `<main>`, `<footer>`) over ARIA roles when possible. They provide built-in semantics and broader compatibility.
+
+**All content must be in a landmark:** Every piece of text on your page should be contained within a landmark region. This ensures screen reader users can access all content through landmark navigation.
+
+**Label multiple instances:** When using the same landmark type multiple times (like multiple `<nav>` elements), provide unique labels:
+
+```html
+<nav aria-label="Main">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog">Blog</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- Main content -->
+
+  <nav aria-label="Pagination">
+    <ul>
+      <li><a href="?page=1">1</a></li>
+      <li><a href="?page=2">2</a></li>
+      <li><a href="?page=3">3</a></li>
+    </ul>
+  </nav>
+</main>
+
+<footer>
+  <nav aria-label="Footer">
+    <ul>
+      <li><a href="/about">About us</a></li>
+      <li><a href="/privacy">Privacy policy</a></li>
+      <li><a href="/terms">Terms of use</a></li>
+      <li><a href="/contact">Contact us</a></li>
+    </ul>
+  </nav>
+</footer>
+```
+
+**Use single-instance landmarks once:** These landmarks should appear only once per page:
+
+- `<header>` or `role="banner"` - Site header
+- `<main>` or `role="main"` - Main content
+- `<footer>` or `role="contentinfo"` - Site footer
+
+**Keep landmarks to a minimum:** Too many landmarks make navigation more difficult. Only create landmarks for major sections that users would benefit from jumping to directly.
+
+### Complete Page Structure Example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Accessible Web Design | Blog | Morgan Peck</title>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <article>
+        <h1>Accessible Web Design</h1>
+        <p>Article content...</p>
+      </article>
+
+      <aside aria-label="Related articles">
+        <h2>Related Posts</h2>
+        <ul>
+          <li><a href="/post-1">Post 1</a></li>
+          <li><a href="/post-2">Post 2</a></li>
+        </ul>
+      </aside>
+    </main>
+
+    <footer>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+      <p>&copy; 2024 Morgan Peck</p>
+    </footer>
+  </body>
+</html>
+```
+
+### Why Landmarks Matter
+
+Landmarks provide screen reader users with:
+
+- Quick navigation between major page sections
+- Better understanding of page structure
+- Ability to skip repetitive content
+- Efficient access to specific areas
+
+Without landmarks, screen reader users must navigate linearly through all content, which is time-consuming and frustrating.
+
+### Backward Compatibility
+
+When supporting older browsers that don't recognize HTML5 elements, you may need to:
+
+1. **Include ARIA roles alongside HTML5 elements:**
+
+```html
+<header role="banner">
+  <!-- Header content -->
+</header>
+```
+
+2. **Use CSS to ensure proper display:**
+
+```css
+header,
+nav,
+main,
+footer,
+aside,
+section,
+article {
+  display: block;
+}
+```
+
+Modern browsers handle HTML5 elements correctly, so additional ARIA roles are typically redundant. However, they don't cause harm and can provide extra assurance for older assistive technologies.
+
+## Conclusion
+
+Page titles, language attributes, and landmarks form the foundation of accessible web pages. Together, they create a structure that helps all users—especially those using assistive technologies—navigate and understand your content efficiently.
+
+**Key takeaways:**
+
+- Every page needs a unique, descriptive title
+- Always declare the page language using `lang` attributes
+- Use semantic HTML5 landmarks to structure your content
+- Label multiple instances of the same landmark type
+- Keep landmark usage purposeful and minimal
+
+By implementing these three foundational elements correctly, you ensure that users can orient themselves, navigate efficiently, and access all your content regardless of how they interact with your site.
