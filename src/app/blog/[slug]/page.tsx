@@ -7,6 +7,7 @@ import Stack from "@/components/layout/Stack/Stack";
 import ThemedImage from "@/components/ui/ThemedImage";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import styles from "./page.module.scss";
+import Badge from "@/components/ui/Badge";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -60,6 +61,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <span className={styles.readingTime}>{post.readingTime}</span>
                 </div>
                 <h1>{post.title}</h1>
+                {post.tags && (
+                  <div className={styles.tags}>
+                    {post.tags.map((tag) => (
+                      <Badge key={tag}>{tag}</Badge>
+                    ))}
+                  </div>
+                )}
                 {post.banner && (
                   <div className={styles.banner}>
                     <ThemedImage light={post.banner.light} dark={post.banner.dark} alt="" />

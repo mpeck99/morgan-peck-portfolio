@@ -9,6 +9,8 @@ thumbnail:
 banner:
   light: "/images/blog/semantics-page-titles-language-landmarks/banner-light.webp"
   dark: "/images/blog/semantics-page-titles-language-landmarks/banner-dark.webp"
+tags:
+  - html
 ---
 
 Every accessible website needs a solid foundation. Page titles, language attributes, and landmark regions form this foundation by helping assistive technology users understand and navigate your content efficiently.
@@ -91,9 +93,15 @@ For a complete list of valid language codes, refer to the [Language Subtag Regis
 You can specify regional variants when needed:
 
 ```html
-<html lang="en-US"><!-- US English --></html>
-<html lang="en-GB"><!-- British English --></html>
-<html lang="es-MX"><!-- Mexican Spanish --></html>
+<html lang="en-US">
+  <!-- US English -->
+</html>
+<html lang="en-GB">
+  <!-- British English -->
+</html>
+<html lang="es-MX">
+  <!-- Mexican Spanish -->
+</html>
 ```
 
 ### Inline Language Changes
@@ -110,10 +118,7 @@ When content includes text in a different language, mark it with the appropriate
 
 ```html
 <blockquote lang="es">
-  <p>
-    Aquí hay una pequeña oración simple para mostrar un ejemplo de lenguaje en
-    bloque.
-  </p>
+  <p>Aquí hay una pequeña oración simple para mostrar un ejemplo de lenguaje en bloque.</p>
 </blockquote>
 ```
 

@@ -9,6 +9,8 @@ thumbnail:
 banner:
   light: "/images/blog/effective-link-text/banner-light.webp"
   dark: "/images/blog/effective-link-text/banner-dark.webp"
+tags:
+  - html
 ---
 
 Links are the foundation of web navigation, but poorly written link text creates barriers for many users. Effective link text should be programmatically determinable and clearly describe the link's purpose or destination without requiring surrounding context.
@@ -82,7 +84,10 @@ Link text should be brief while remaining descriptive. Long link text becomes te
 **Avoid:**
 
 ```html
-<a href="/accessibility-guide">Click this link to read our comprehensive guide about web accessibility best practices and WCAG compliance</a>
+<a href="/accessibility-guide"
+  >Click this link to read our comprehensive guide about web accessibility best practices and WCAG
+  compliance</a
+>
 ```
 
 ### Be Consistent
@@ -102,8 +107,7 @@ Users might think these lead to different pages when they actually go to the sam
 Links leading to different pages must use different text. These links go to different pages but use identical text, making it impossible to distinguish them:
 
 ```html
-<a href="directory.html">Contact Us</a>
-<a href="contact-form.html">Contact Us</a>
+<a href="directory.html">Contact Us</a> <a href="contact-form.html">Contact Us</a>
 ```
 
 Users can't tell these links apart without reading surrounding context. Instead, make each link's purpose clear through distinct text:

@@ -17,6 +17,7 @@ export type BlogPostFrontmatter = {
   description: string;
   thumbnail?: ThemedImage;
   banner?: ThemedImage;
+  tags?: string[];
 };
 
 export type BlogPostSummary = BlogPostFrontmatter & {
@@ -47,6 +48,7 @@ function readPostFile(slug: string): { frontmatter: BlogPostFrontmatter; content
       description: data.description,
       thumbnail: data.thumbnail,
       banner: data.banner,
+      tags: data.tags,
     },
     content,
   };

@@ -9,6 +9,9 @@ thumbnail:
 banner:
   light: "/images/blog/images-alt-text/banner-light.webp"
   dark: "/images/blog/images-alt-text/banner-dark.webp"
+tags:
+  - vision
+  - html
 ---
 
 Images are a fundamental part of web content, but not everyone can access them visually. Users who are blind rely on screen readers to listen to alternative text descriptions, while users who are deafblind use refreshable braille displays to read these descriptions. As developers, we must ensure that every meaningful image has appropriate alternative text.
@@ -307,20 +310,11 @@ The main image requires alt text that:
 Each `<area>` element must have its own alt text describing its destination or purpose:
 
 ```html
-<img
-  src="navigation-map.png"
-  alt="Site navigation. Select a section to visit."
-  usemap="#nav-map"
-/>
+<img src="navigation-map.png" alt="Site navigation. Select a section to visit." usemap="#nav-map" />
 
 <map name="nav-map">
   <area shape="rect" coords="0,0,100,50" href="/about" alt="About us" />
-  <area
-    shape="rect"
-    coords="100,0,200,50"
-    href="/services"
-    alt="Our services"
-  />
+  <area shape="rect" coords="100,0,200,50" href="/services" alt="Our services" />
   <area shape="rect" coords="200,0,300,50" href="/contact" alt="Contact us" />
 </map>
 ```
