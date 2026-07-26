@@ -14,7 +14,7 @@ export default function Blog() {
         <Container>
           <Stack>
             <h1>Blog</h1>
-            <Grid columns={3}>
+            <Grid>
               {posts.map((post) => (
                 <BlogCard key={post.slug} {...post} />
               ))}

@@ -136,9 +136,12 @@ main {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-xl);
+  > * {
+    flex: 1 0 25rem;
+  }
 }
 
 .split {
@@ -150,10 +153,6 @@ main {
 
 @media (max-width: 768px) {
   .split {
-    grid-template-columns: 1fr;
-  }
-
-  .grid {
     grid-template-columns: 1fr;
   }
 }

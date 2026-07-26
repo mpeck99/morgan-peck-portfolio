@@ -6,7 +6,7 @@
 .card--post {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  grid-template-rows: auto auto auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
   gap: var(--space-md);
 }
 

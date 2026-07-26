@@ -24,7 +24,7 @@ export default function Footer() {
                   <a href="/blog">Blog</a>
                 </li>
                 <li>
-                  <a href="/design-system">Design System</a>
+                  <a href="/projects/design-system">Design System</a>
                 </li>
                 <li>
                   <a href="/about">About</a>
