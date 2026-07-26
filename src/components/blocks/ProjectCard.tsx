@@ -1,5 +1,6 @@
 import styles from "./ProjectCard.module.scss";
 import Card from "../ui/Card";
+import { MoveRight } from "lucide-react";
 
 type ProjectCardProps = {
   title: string;
@@ -27,12 +28,12 @@ export default function ProjectCard({
   return (
     <Card className={styles["card--project"]}>
       {icon && <div className={styles.icon}>{icon}</div>}
-      <h2 className={styles.title}>{title}</h2>
+      <h3 className={styles.title}>{title}</h3>
       {description && <p className={styles.description}>{description}</p>}
       {image && <img src={image.url} alt={image.alt} />}
       {link && (
         <a href={link.url} title={link.title} className={styles.link}>
-          {link.title}
+          {link.title} <MoveRight />
         </a>
       )}
       {index !== undefined && (

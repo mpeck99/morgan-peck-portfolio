@@ -6,7 +6,7 @@
 .card--project {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: auto auto 1fr auto;
   gap: var(--space-md) var(--space-2xl);
 }
 
@@ -40,8 +40,25 @@
 }
 
 .link {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+
   grid-row: 4;
   grid-column: 1;
+  align-self: start;
+}
+
+.linkIcon {
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.link:hover .linkIcon,
+.link:focus-visible .linkIcon {
+  transform: translateX(3px);
 }
 
 .index {

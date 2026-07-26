@@ -21,8 +21,8 @@ $theme-dark: (
   warning: map.get(colors.$colors, yellow-500),
   error: map.get(colors.$colors, red-500),
   info: map.get(colors.$colors, blue-500),
-  link: map.get(colors.$colors, neutral-300),
-  link-hover: map.get(colors.$colors, teal-500),
+  link: map.get(colors.$colors, teal-600),
+  link-hover: map.get(colors.$colors, pink-600),
 );
 
 $theme-light: (

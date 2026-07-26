@@ -37,6 +37,15 @@
     margin-block: 0;
 
     font-size: var(--font-size-lg);
+
+    a {
+      color: var(--color-text-secondary);
+
+      &:hover,
+      &:focus {
+        color: var(--color-link-hover);
+      }
+    }
   }
 
   @media (max-width: 768px) {
