@@ -13,6 +13,9 @@ export default function About() {
             <ul>
               <li>
                 <a href="https://storyset.com/work">Work illustrations by Storyset</a>
+                <li>
+                  <a href="https://storyset.com/data">Data illustrations by Storyset</a>
+                </li>
               </li>
             </ul>
           </Stack>

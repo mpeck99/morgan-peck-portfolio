@@ -8,6 +8,10 @@
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto 1fr auto;
   gap: var(--space-md) var(--space-2xl);
+
+  position: relative;
+
+  overflow: hidden;
 }
 
 .icon {
@@ -37,6 +41,18 @@
 .description {
   grid-row: 3;
   grid-column: 1;
+}
+
+.image {
+  height: 100%;
+  width: auto;
+
+  position: absolute;
+  right: -6rem;
+
+  z-index: 0;
+
+  opacity: 0.15;
 }
 
 .link {

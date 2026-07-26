@@ -10,6 +10,9 @@ export const projects = [
       title: "View my blog",
       url: "/projects/accessibility-blog",
     },
+    image: {
+      url: "/images/icon-accessibility.svg",
+    },
   },
   {
     title: "Plant Hub",
@@ -18,6 +21,9 @@ export const projects = [
     link: {
       title: "Learn more about my plans",
       url: "/projects/plant-hub",
+    },
+    image: {
+      url: "./images/rubber-plant.png",
     },
   },
 
@@ -28,6 +34,9 @@ export const projects = [
     link: {
       title: "View the design system",
       url: "/projects/design-system",
+    },
+    image: {
+      url: "/images/development-icon.svg",
     },
   },
 ];

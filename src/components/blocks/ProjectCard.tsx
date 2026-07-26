@@ -30,7 +30,7 @@ export default function ProjectCard({
       {icon && <div className={styles.icon}>{icon}</div>}
       <h3 className={styles.title}>{title}</h3>
       {description && <p className={styles.description}>{description}</p>}
-      {image && <img src={image.url} alt={image.alt} />}
+      {image && <img src={image.url} alt={image.alt} className={styles["image"]} />}
       {link && (
         <a href={link.url} title={link.title} className={styles.link}>
           {link.title} <MoveRight />
