@@ -1,3 +1,4 @@
+import BlogCard from "@/components/blocks/BlogCard/BlogCard";
 import ProjectCard from "@/components/blocks/ProjectCard/ProjectCard";
 import Container from "@/components/layout/Container/Container";
 import Grid from "@/components/layout/Grid/Grid";
@@ -5,8 +6,10 @@ import Section from "@/components/layout/Section/Section";
 import Stack from "@/components/layout/Stack/Stack";
 import HeroBanner from "@/components/sections/HeroBanner";
 import { projects } from "@/data/projects";
+import { getRecentPosts } from "@/lib/blog";
 
 export default function Home() {
+  const recentPosts = getRecentPosts(3);
   return (
     <main>
       <HeroBanner
@@ -37,8 +40,12 @@ export default function Home() {
       <Section>
         <Container>
           <Stack>
-            <h2>About me</h2>
-            <p>Stay tuned for more about me</p>
+            <h2>Recent posts</h2>
+            <Grid>
+              {recentPosts.map((post) => (
+                <BlogCard key={post.slug} {...post} />
+              ))}
+            </Grid>
           </Stack>
         </Container>
       </Section>

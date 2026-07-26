@@ -52,7 +52,6 @@ function readPostFile(slug: string): { frontmatter: BlogPostFrontmatter; content
   };
 }
 
-/** Returns metadata for all posts, sorted newest first. */
 export function getAllPosts(): BlogPostSummary[] {
   return getPostSlugs()
     .map((slug) => {
@@ -65,7 +64,10 @@ export function getAllPosts(): BlogPostSummary[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-/** Returns full frontmatter + MDX content for a single post. */
+export function getRecentPosts(limit = 3): BlogPostSummary[] {
+  return getAllPosts().slice(0, limit);
+}
+
 export function getPostBySlug(slug: string): BlogPost | null {
   try {
     const { frontmatter, content } = readPostFile(slug);

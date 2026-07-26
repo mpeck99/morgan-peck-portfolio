@@ -6,9 +6,6 @@
 .card--project {
   display: grid;
   grid-template-columns: 1fr auto;
-  // icon / title / description / spacer / link
-  // the spacer row absorbs leftover height so the link always
-  // lands in the same spot regardless of description length
   grid-template-rows: auto auto auto 1fr auto;
   gap: var(--space-md) var(--space-2xl);
 
