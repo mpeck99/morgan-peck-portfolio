@@ -1,4 +1,6 @@
 .badge {
+  position: relative;
+
   display: inline-flex;
   align-items: center;
   gap: var(--space-3xs);
@@ -15,8 +17,27 @@
 
   color: var(--color-text-secondary);
 
-  border: 1.5px solid var(--color-primary);
+  border: 1.5px solid transparent;
   border-radius: var(--radius-full, 999px);
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    inset: -1.5px;
+    z-index: -1;
+
+    padding: 1.5px;
+    border-radius: inherit;
+
+    background: linear-gradient(135deg, var(--color-primary), var(--color-pink), var(--color-accent));
+
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
 }
 
 .icon {

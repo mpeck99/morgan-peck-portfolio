@@ -25,7 +25,7 @@ export default function ProjectCard({
   index,
 }: ProjectCardProps) {
   return (
-    <Card className={styles.cardProject}>
+    <Card className={styles["card--project"]}>
       {icon && <div className={styles.icon}>{icon}</div>}
       <h2 className={styles.title}>{title}</h2>
       {description && <p className={styles.description}>{description}</p>}

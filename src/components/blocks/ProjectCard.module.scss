@@ -4,4 +4,55 @@
 //===---------------------------===
 //---------------------------------
 .card--project {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: repeat(4, auto);
+  gap: var(--space-md) var(--space-2xl);
+}
+
+.icon {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  grid-column: 1;
+  grid-row: 1;
+
+  padding-inline: var(--space-2xs);
+  padding-block: var(--space-2xs);
+
+  background: var(--color-background);
+  border-radius: var(--radius-md);
+
+  color: var(--color-primary);
+}
+
+.title {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.description {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.link {
+  grid-row: 4;
+  grid-column: 1;
+}
+
+.index {
+  grid-column: 2;
+  grid-row: 1 / -1;
+
+  align-self: flex-end;
+
+  font-size: var(--font-size-2xl);
+  font-family: var(--font-body);
+  line-height: 1;
+
+  opacity: 0.2;
 }

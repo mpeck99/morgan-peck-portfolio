@@ -8,7 +8,7 @@
 
 $button-dark: (
   primary-text: map.get(colors.$colors, neutral-950),
-  primary-hover-text: map.get(colors.$colors, neutral-100),
+  primary-hover-text: map.get(colors.$colors, neutral-950),
   primary-hover-bg: map.get(colors.$colors, teal-700),
   outline-bg: map.get(colors.$colors, transparent),
   outline-bg-hover: map.get(colors.$colors, teal-800),
