@@ -8,6 +8,7 @@
 
 $theme-dark: (
   background: map.get(colors.$colors, neutral-950),
+  background-subtle: map.get(colors.$colors, neutral-800),
   surface: map.get(colors.$colors, neutral-900),
   text-primary: map.get(colors.$colors, neutral-200),
   text-secondary: map.get(colors.$colors, neutral-400),
@@ -27,6 +28,7 @@ $theme-dark: (
 
 $theme-light: (
   background: map.get(colors.$colors, neutral-100),
+  background-subtle: map.get(colors.$colors, neutral-200),
   surface: map.get(colors.$colors, neutral-50),
   text-primary: map.get(colors.$colors, neutral-950),
   text-secondary: map.get(colors.$colors, neutral-600),

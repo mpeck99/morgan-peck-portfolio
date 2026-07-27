@@ -5,11 +5,16 @@ export type BadgeProps = {
   children: React.ReactNode;
   icon?: LucideIcon;
   className?: string;
+  solid?: boolean;
 };
 
-export default function Badge({ children, icon: Icon, className }: BadgeProps) {
+export default function Badge({ children, icon: Icon, className, solid }: BadgeProps) {
+  const badgeClassName = [styles.badge, solid && styles["badge--solid"], className]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <span className={className ? `${styles.badge} ${className}` : styles.badge}>
+    <span className={badgeClassName}>
       {Icon && <Icon className={styles.icon} size={14} strokeWidth={2} />}
       {children}
     </span>

@@ -1,0 +1,70 @@
+.card--movie {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.poster {
+  width: calc(100% + var(--space-xs) * 2);
+  aspect-ratio: 2 / 3;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+  margin-inline: calc(-1 * var(--space-xs));
+  margin-block-start: calc(-1 * var(--space-xs));
+
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.poster-fallback {
+  width: calc(100% + var(--space-xs) * 2);
+  aspect-ratio: 2 / 3;
+
+  margin-inline: calc(-1 * var(--space-xs));
+  margin-block-start: calc(-1 * var(--space-xs));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  text-align: center;
+  padding-inline: var(--space-lg);
+
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-primary) 45%, var(--color-background) 55%) 0%,
+    color-mix(in srgb, var(--color-accent) 45%, var(--color-background) 55%) 50%,
+    color-mix(in srgb, var(--color-pink) 45%, var(--color-background) 55%) 100%
+  );
+
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.poster-fallback-icon {
+  width: var(--space-3xl);
+  height: var(--space-3xl);
+
+  color: var(--color-text-primary);
+  opacity: 0.85;
+}
+
+.poster-fallback-text {
+  max-width: 10ch;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  opacity: 0.85;
+}
+
+.title {
+  font-size: var(--font-size-sm);
+}

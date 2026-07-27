@@ -20,6 +20,13 @@
   border: 1.5px solid transparent;
   border-radius: var(--radius-full, 999px);
 
+  &--solid {
+    color: var(--color-accent);
+
+    background: var(--color-background-subtle);
+    border-color: var(--color-accent);
+  }
+
   &::before {
     content: "";
 
@@ -30,7 +37,12 @@
     padding: 1.5px;
     border-radius: inherit;
 
-    background: linear-gradient(135deg, var(--color-primary), var(--color-pink), var(--color-accent));
+    background: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-pink),
+      var(--color-accent)
+    );
 
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
