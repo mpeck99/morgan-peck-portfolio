@@ -23,10 +23,14 @@ export type Movie = {
 
 const movies = moviesData as Movie[];
 
+function byTitle(a: Movie, b: Movie): number {
+  return a.title.localeCompare(b.title, undefined, { sensitivity: "base", numeric: true });
+}
+
 export function getMoviesWithBackdrop(): Movie[] {
-  return movies.filter((m) => m.backdrop != null);
+  return movies.filter((m) => m.backdrop != null).sort(byTitle);
 }
 
 export function getAllMovies(): Movie[] {
-  return movies;
+  return [...movies].sort(byTitle);
 }

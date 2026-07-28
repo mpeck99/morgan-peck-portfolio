@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+scripts/movie-fetch-report.json
+scripts/omdb-audit-report.json
