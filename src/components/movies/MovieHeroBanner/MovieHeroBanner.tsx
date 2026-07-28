@@ -43,7 +43,7 @@ export default function MovieHeroBanner({ movies }: { movies: Movie[] }) {
             <TomatoScore score={movie.ratings.rottenTomatoes} />
           </span>
         </p>
-        {movie.plot && <p>{movie.plot}</p>}
+        {movie.plot && <p className={styles["plot"]}>{movie.plot}</p>}
         {movie.imdbID && <Button href={`/projects/movies/${movie.imdbID}`}>View details</Button>}
       </div>
       {movie.backdrop && (

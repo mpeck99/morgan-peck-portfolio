@@ -76,22 +76,11 @@
 }
 
 .title {
-  text-wrap: pretty;
+  max-width: 900px;
 
+  text-wrap: pretty;
   text-transform: capitalize;
   text-wrap: pretty;
-}
-
-.content {
-  max-width: 900px;
-  width: 100%;
-
-  position: relative;
-  z-index: 1;
-
-  * {
-    color: var(--color-text-primary);
-  }
 }
 
 .meta {
@@ -101,7 +90,22 @@
   justify-content: center;
   gap: var(--space-xs);
 
-  margin-block-end: var(--space-2xl);
+  margin-block-end: var(--space-lg);
+}
+
+.plot {
+  max-width: 600px;
+
+  margin-block-end: var(--space-3xl);
+
+  color: var(--color-text-primary);
+}
+
+.content {
+  width: 100%;
+
+  position: relative;
+  z-index: 1;
 }
 
 .ratings {
