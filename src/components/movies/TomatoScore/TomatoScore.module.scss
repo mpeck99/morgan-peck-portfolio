@@ -1,0 +1,13 @@
+.tomato-score {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs, 4px);
+
+  font-weight: var(--font-weight-medium);
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}

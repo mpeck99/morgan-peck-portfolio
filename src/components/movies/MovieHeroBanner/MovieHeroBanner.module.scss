@@ -95,7 +95,31 @@
 }
 
 .meta {
-  margin-block-end: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs);
+
+  margin-block-end: var(--space-2xl);
+}
+
+.ratings {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+
+  font-weight: var(--font-weight-medium);
+
+  svg {
+    flex-shrink: 0;
+  }
 }
 
 .overlay {
