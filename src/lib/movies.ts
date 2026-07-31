@@ -34,3 +34,11 @@ export function getMoviesWithBackdrop(): Movie[] {
 export function getAllMovies(): Movie[] {
   return [...movies].sort(byTitle);
 }
+
+export function getMoviesByImdbID(imdbID: string): Movie | null {
+  return movies.find((m) => m.imdbID === imdbID) ?? null;
+}
+
+export function getAllImdbIDs(): string[] {
+  return movies.filter((m) => m.imdbID != null).map((m) => m.imdbID as string);
+}

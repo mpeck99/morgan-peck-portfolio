@@ -1,0 +1,11 @@
+.movie-page {
+  @media (min-width: 768px) {
+    position: relative;
+  }
+}
+
+.poster {
+  max-width: 20rem;
+
+  border-radius: var(--radius-lg);
+}

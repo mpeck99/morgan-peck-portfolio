@@ -88,7 +88,7 @@ async function fetchFromOMDbFuzzy(title, year) {
   }
 
   // OMDb sometimes tracks a limited/festival release year instead of the
-  // wide release year your sheet has, so allow a small buffer — but require
+  // wide release year my sheet has, so allow a small buffer — but require
   // an exact title match within that window so we don't grab a sequel
   // (e.g. "Open Water 2: Adrift") just because its year happens to be close.
   // Also drop obvious non-movie junk up front so it never even becomes a
@@ -104,7 +104,7 @@ async function fetchFromOMDbFuzzy(title, year) {
   }
 
   // The search endpoint only returns summary fields, so fetch full details by imdbID,
-  // using the candidate's own year since it may differ from your sheet's year
+  // using the candidate's own year since it may differ from my sheet's year
   return lookupOMDbByTitle(candidate.Title, candidate.Year);
 }
 
@@ -173,7 +173,7 @@ async function fetchFromTMDb(title, year) {
   const data = await res.json();
 
   // Allow a 1-year buffer since TMDb's release_date sometimes reflects a
-  // different country's release than the year in your sheet (e.g. a UK
+  // different country's release than the year in my sheet (e.g. a UK
   // release the year before the US release). `video: true` is TMDb's own
   // flag for bonus/making-of/featurette content bundled alongside a real
   // movie, and titlesResemble guards against grabbing a same-year, similarly
@@ -244,14 +244,15 @@ function shapeMovie({ title, year }, omdb, tmdb, tmdbDetails, tmdbCredits) {
 
   const tmdbGenre = tmdbDetails?.genres?.map((g) => g.name) ?? [];
   const tmdbCountry = tmdbDetails?.production_countries?.map((c) => c.name) ?? [];
-  const tmdbDirectors = tmdbCredits?.crew?.filter((c) => c.job === "Director").map((c) => c.name) ?? [];
+  const tmdbDirectors =
+    tmdbCredits?.crew?.filter((c) => c.job === "Director").map((c) => c.name) ?? [];
   const tmdbActors = tmdbCredits?.cast?.slice(0, 3).map((c) => c.name) ?? [];
 
   return {
     title,
     year,
     rated: cleanField(omdb.Rated),
-    runtime: cleanField(omdb.Runtime) ? parseInt(omdb.Runtime, 10) : tmdbDetails?.runtime ?? null,
+    runtime: cleanField(omdb.Runtime) ? parseInt(omdb.Runtime, 10) : (tmdbDetails?.runtime ?? null),
     genre: genre.length ? genre : tmdbGenre,
     directors: directors.length ? directors : tmdbDirectors,
     actors: actors.length ? actors : tmdbActors,
@@ -264,7 +265,9 @@ function shapeMovie({ title, year }, omdb, tmdb, tmdbDetails, tmdbCredits) {
       imdb: omdb.imdbRating && omdb.imdbRating !== "N/A" ? parseFloat(omdb.imdbRating) : null,
       rottenTomatoes,
     },
-    poster: cleanField(omdb.Poster) ?? (tmdb?.poster_path ? `${TMDB_IMAGE_BASE}${tmdb.poster_path}` : null),
+    poster:
+      cleanField(omdb.Poster) ??
+      (tmdb?.poster_path ? `${TMDB_IMAGE_BASE}${tmdb.poster_path}` : null),
     backdrop: tmdb?.backdrop_path ? `${TMDB_IMAGE_BASE}${tmdb.backdrop_path}` : null,
     plot: cleanField(omdb.Plot) ?? cleanField(tmdb?.overview) ?? null,
     imdbID: omdb.imdbID ?? tmdbDetails?.imdb_id ?? null,
@@ -372,7 +375,9 @@ async function run() {
         imdbID: omdb.imdbID ?? null,
       });
     } else {
-      console.log(`  Could not re-match "${movie.title}" for backfill — falling back to TMDb for plot.`);
+      console.log(
+        `  Could not re-match "${movie.title}" for backfill — falling back to TMDb for plot.`
+      );
       results.push({ ...movie, plot: cleanField(tmdb?.overview) ?? null });
     }
 
