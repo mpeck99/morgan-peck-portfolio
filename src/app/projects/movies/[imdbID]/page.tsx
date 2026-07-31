@@ -43,7 +43,7 @@ export default async function MoviePage({ params }: MoviePageProps) {
           <Grid>
             {movie.poster && <img src={movie.poster} alt="" className={styles["poster"]} />}
             <div className={styles["details"]}>
-              <h1>{movie.title}</h1>
+              <h1 className={styles["title"]}>{movie.title}</h1>
               <p className={styles["meta"]}>
                 {movie.year} · {movie.runtime} min · {movie.rated ?? "Not Rated"}
               </p>

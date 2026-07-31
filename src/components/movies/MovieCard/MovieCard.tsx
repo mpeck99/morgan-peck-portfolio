@@ -19,10 +19,12 @@ export default function MovieCard({ movie }: MovieCardProps) {
           <span className={styles["poster-fallback-text"]}>Movie poster not found</span>
         </div>
       )}
-      <h3 className={styles["title"]}>{movie.title}</h3>
-      <p className={styles["meta"]}>
-        {movie.year} · {movie.runtime} min · {movie.genre[0]}
-      </p>
+      <div className={styles["content"]}>
+        <h3 className={styles["title"]}>{movie.title}</h3>
+        <p className={styles["meta"]}>
+          {movie.year} · {movie.runtime} min · {movie.genre[0]}
+        </p>
+      </div>
     </Card>
   );
 
