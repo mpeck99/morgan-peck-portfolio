@@ -7,6 +7,11 @@ import styles from "./page.module.scss";
 import Grid from "@/components/layout/Grid/Grid";
 import Section from "@/components/layout/Section/Section";
 import Container from "@/components/layout/Container/Container";
+import { Star } from "lucide-react";
+
+// IMDb's own brand yellow — same constant MovieHeroBanner uses, so the
+// star reads consistently as "IMDb rating" everywhere it shows up.
+const IMDB_GOLD = "#f5c518";
 
 type MoviePageProps = {
   params: Promise<{ imdbID: string }>;
@@ -37,7 +42,7 @@ export default async function MoviePage({ params }: MoviePageProps) {
   }
 
   return (
-    <main className={styles["movie-page"]}>
+    <main className={styles["movie-page"]} style={{ backgroundImage: `url(${movie.backdrop})` }}>
       <Section>
         <Container>
           <Grid>
@@ -53,7 +58,12 @@ export default async function MoviePage({ params }: MoviePageProps) {
                 ))}
               </div>
               <div className={styles["ratings"]}>
-                {movie.ratings.imdb != null && <span>IMDb {movie.ratings.imdb}</span>}
+                {movie.ratings.imdb != null && (
+                  <span className={styles["rating"]}>
+                    <Star size={24} fill={IMDB_GOLD} stroke={IMDB_GOLD} />
+                    {movie.ratings.imdb}
+                  </span>
+                )}
                 <TomatoScore score={movie.ratings.rottenTomatoes} />
               </div>
               {movie.plot && <p className={styles["plot"]}>{movie.plot}</p>}
