@@ -8,9 +8,8 @@ import Grid from "@/components/layout/Grid/Grid";
 import Section from "@/components/layout/Section/Section";
 import Container from "@/components/layout/Container/Container";
 import { Star } from "lucide-react";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
-// IMDb's own brand yellow — same constant MovieHeroBanner uses, so the
-// star reads consistently as "IMDb rating" everywhere it shows up.
 const IMDB_GOLD = "#f5c518";
 
 type MoviePageProps = {
@@ -40,11 +39,18 @@ export default async function MoviePage({ params }: MoviePageProps) {
   if (!movie) {
     notFound();
   }
+  const breadcrumbs = [
+    { path: "/", title: "Home" },
+    { path: "/projects", title: "Projects" },
+    { path: "/projects/movies", title: "Movies" },
+    { path: `/projects/movies/${movie.imdbID}`, title: movie.title },
+  ];
 
   return (
     <main className={styles["movie-page"]} style={{ backgroundImage: `url(${movie.backdrop})` }}>
       <Section>
         <Container>
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
           <Grid>
             {movie.poster && <img src={movie.poster} alt="" className={styles["poster"]} />}
             <div className={styles["details"]}>
@@ -54,7 +60,9 @@ export default async function MoviePage({ params }: MoviePageProps) {
               </p>
               <div className={styles["genres"]}>
                 {movie.genre.map((g) => (
-                  <Badge key={g}>{g}</Badge>
+                  <Badge key={g} solid>
+                    {g}
+                  </Badge>
                 ))}
               </div>
               <div className={styles["ratings"]}>

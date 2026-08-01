@@ -80,8 +80,13 @@
   }
 }
 
-.poster {
+:global(.grid) > .poster {
   max-width: 20rem;
+  width: 100%;
+  height: auto;
+
+  flex: 0 0 auto;
+  align-self: flex-start;
 
   border-radius: var(--radius-lg);
 }
