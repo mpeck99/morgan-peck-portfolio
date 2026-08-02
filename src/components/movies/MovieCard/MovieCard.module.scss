@@ -47,7 +47,7 @@
     135deg,
     color-mix(in srgb, var(--color-primary) 45%, var(--color-background) 55%) 0%,
     color-mix(in srgb, var(--color-accent) 45%, var(--color-background) 55%) 50%,
-    color-mix(in srgb, var(--color-pink) 45%, var(--color-background) 55%) 100%
+    color-mix(in srgb, var(--color-accent-alt) 45%, var(--color-background) 55%) 100%
   );
 
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;

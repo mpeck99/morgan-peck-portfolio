@@ -18,14 +18,14 @@
   color: var(--color-text-secondary);
 
   border: 1.5px solid transparent;
-  border-radius: var(--radius-full, 999px);
+  border-radius: var(--radius-full);
 
   &--solid {
-    color: var(--color-accent);
+    color: var(--color-accent-alt);
     font-weight: var(--font-weight-bold);
 
     background: var(--color-background-subtle);
-    border-color: var(--color-accent);
+    border-color: var(--color-accent-alt);
   }
 
   &::before {
@@ -41,7 +41,7 @@
     background: linear-gradient(
       135deg,
       var(--color-primary),
-      var(--color-pink),
+      var(--color-accent-alt),
       var(--color-accent)
     );
 

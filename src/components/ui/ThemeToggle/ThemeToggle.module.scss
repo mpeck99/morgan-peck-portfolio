@@ -11,7 +11,7 @@
 
   background: var(--color-surface);
   border: 1px solid transparent;
-  border-radius: var(--radius-full, 999px);
+  border-radius: var(--radius-full);
   cursor: pointer;
 
   &::before {
@@ -24,7 +24,12 @@
     padding: 1px;
     border-radius: inherit;
 
-    background: linear-gradient(135deg, var(--color-primary), var(--color-pink), var(--color-accent));
+    background: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-accent-alt),
+      var(--color-accent)
+    );
 
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -55,7 +60,7 @@
   height: calc(100% - 6px);
 
   background: var(--color-primary);
-  border-radius: var(--radius-full, 999px);
+  border-radius: var(--radius-full);
 
   transition: transform 0.2s ease;
 }

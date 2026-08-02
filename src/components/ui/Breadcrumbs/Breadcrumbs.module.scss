@@ -2,8 +2,13 @@
 // Breadcrumbs.module.scss
 //===-----------------===
 .breadcrumbs {
+  max-width: fit-content;
+
   padding-inline: var(--space-sm);
   padding-block: var(--space-sm);
+
+  background-color: hsl(from var(--color-background) h s l / 0.6);
+  border-radius: var(--radius-full);
   ol {
     display: flex;
     align-items: center;
